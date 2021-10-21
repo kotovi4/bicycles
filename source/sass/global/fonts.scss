@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/opensans-light.woff2") format("woff2"),
+    url("../fonts/opensans-light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/opensans-regular.woff2") format("woff2"),
+    url("../fonts/opensans-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/opensans-semibold.woff2") format("woff2"),
+    url("../fonts/opensans-semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/opensans-bold.woff2") format("woff2"),
+    url("../fonts/opensans-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: "Overpass";
+  src: url("../fonts/overpass-semibold.woff2") format("woff2"),
+    url("../fonts/overpass-semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+ */
