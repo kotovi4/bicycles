@@ -1,0 +1,10 @@
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 38px;
+  padding-bottom: 98px;
+
+  @media (max-width: $tablet-width) {
+    padding-bottom: 50px;
+  }
+}

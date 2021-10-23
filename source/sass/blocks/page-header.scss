@@ -38,7 +38,7 @@
 
   @media (max-width: $tablet-width) {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     z-index: 6;
@@ -85,6 +85,7 @@
 }
 
 .page-header--opened .page-header__toggle {
+  position: fixed;
   background-color: $white;
 }
 

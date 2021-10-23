@@ -34,7 +34,7 @@
           <a class="main-nav__link" href="#">Видео про велосипеды</a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Контакты</a>
+          <a class="main-nav__link" href="#contacts">Контакты</a>
         </li>
       </ul>
     </nav>
@@ -44,15 +44,15 @@
     <h1 class="visually-hidden">Велосипеды Moon</h1>
     <section class="promo">
       <div class="promo__wrapper">
-        <div class="promo__intro about-us" id="about-us">
+        <div class="promo__intro intro" id="intro">
           <h2 class="visually-hidden">Подбор велосипеда</h2>
-          <a class="about-us__logo" href="index.html">
-            <svg class="about-us__logo-img" width="68" height="22">
+          <a class="intro__logo" href="index.html">
+            <svg class="intro__logo-img" width="68" height="22">
               <use xlink:href="img/sprite_auto.svg#icon-logo"></use>
             </svg>
           </a>
-          <h3 class="about-us__title">Мы продаем велосипеды</h3>
-          <p class="about-us__text">Наш магазин отбирает только самые лучшие велосипеды для продажи</p>
+          <h3 class="intro__title">Мы продаем велосипеды</h3>
+          <p class="intro__text">Наш магазин отбирает только самые лучшие велосипеды для продажи</p>
         </div>
         <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" autocomplete="off">
           <h3 class="form__title">Заполните поля ниже и мы подберем велосипед Вашей мечты</h3>
@@ -66,7 +66,51 @@
         </form>
       </div>
     </section>
+
+    <section class="about-us" id="about-us">
+      <h2 class="about-us__title">Несколько фактов о нас</h2>
+      <ul class="about-us__list">
+        <li class="about-us__item">
+          <span>01</span>
+          <p>Самый широкий выбор велосипедов!</p>
+        </li>
+        <li class="about-us__item">
+          <span>02</span>
+          <p>Доставка велосипедов по всей России!</p>
+        </li>
+        <li class="about-us__item">
+          <span>03</span>
+          <p>Большой выбор крутых аксессуаров!</p>
+        </li>
+        <li class="about-us__item">
+          <span>04</span>
+          <p>Профессиональные консультации!</p>
+        </li>
+      </ul>
+    </section>
   </main>
+  <footer class="page-footer" id="contacts">
+    <div class="page-footer__map map">
+      <h2 class="map__title">Как нас найти?</h2>
+      <p class="map__text">Мы находимся по адресу: Санкт-Петербург, ул. Большая Конюшенная, д. 19</p>
+      <img class="map__img" src="img/map-img-desktop@1x.png" width="957" height="530" alt="Санкт-Петербург, ул. Большая Конюшенная, д. 19/8">
+    </div>
+
+    <div class="page-footer__contacts contacts">
+      <a class="contacts_email" href="mailto:puteshestviemechta@gmail.ru">
+        <svg width="26" height="20">
+          <use xlink:href="img/sprite_auto.svg#icon-email"></use>
+        </svg>
+        <p class="contacts_text">puteshestviemechta@gmail.ru</p>
+      </a>
+      <a class="contacts_tel" href="tel:+749978468446">
+        <svg width="22" height="23">
+          <use xlink:href="img/sprite_auto.svg#icon-phone"></use>
+        </svg>
+        <p class="contacts_text">+7 (499) -784-684-46</p>
+      </a>
+    </div>
+  </footer>
   <script src="js/script.js"></script>
 </body>
 </html>
