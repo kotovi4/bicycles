@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%
+}
+
+a {
+  text-decoration: none
+}
+
+body {
+  margin: 0;
+  font-family: $font-default;
+}
+
+button {
+  cursor: pointer;
+}

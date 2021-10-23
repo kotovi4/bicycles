@@ -1,0 +1,112 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px 0 10px;
+  width: 880px;
+  border-bottom: 1px solid transparentize($white, 0.3);
+  z-index: 5;
+
+  @media (max-width: $tablet-width) {
+    padding: 0;
+    width: 100%;
+    border: none;
+  }
+
+  &--closed .main-nav {
+    display: none;
+  }
+}
+
+.page-header__logo {
+  display: none;
+
+  @media (max-width: $tablet-width) {
+    position: absolute;
+    display: flex;
+    left: 21px;
+    top: 24px;
+  }
+
+  @media (max-width: $mobile-width) {
+    left: 16px;
+  }
+}
+
+.page-header__toggle {
+  display: none;
+
+  @media (max-width: $tablet-width) {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 6;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    background-color: $accent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
+  }
+}
+
+.page-header__toggle-line {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 22.5px;
+  height: 1px;
+  font-size: 0;
+  color: transparent;
+  background-color: $black;
+  transition: 0.3s;
+
+  &::after {
+    top: 5px;
+  }
+
+  &::before {
+    top: -5px;
+  }
+}
+
+.page-header__toggle-line::after,
+.page-header__toggle-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22.5px;
+  height: 1px;
+  background-color: $black;
+  transform-origin: 50% 50%;
+  transition: 0.3s, transform 0.3s;
+}
+
+.page-header--opened .page-header__toggle {
+  background-color: $white;
+}
+
+.page-header--opened .page-header__toggle-line {
+  background: transparent;
+}
+
+.page-header--opened .page-header__toggle-line::after,
+.page-header--opened .page-header__toggle-line::before {
+  transform: rotate3d(0, 0, 1, 45deg);
+  transition: 0.3s, transform 0.3s 0.3s;
+  top: 0;
+  left: 0;
+  width: 22.5px;
+  height: 1px;
+  background-color: transparentize($black--dark, 0.8);
+}
+
+.page-header--opened .page-header__toggle-line::before {
+  transform: rotate3d(0, 0, 1, -45deg);
+}
+
+.page-header--opened .page-header__toggle-line .page-header__toggle-line:hover {
+  background: transparent;
+}

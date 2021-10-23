@@ -1,0 +1,58 @@
+.form {
+  width: 327px;
+
+  @media (max-width: $tablet-width) {
+    padding-top: 145px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: $mobile-width){
+    padding-top: 135px;
+    width: 288px;
+  }
+}
+
+.form__title {
+  margin: 5px 0 20px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: -0.005em;
+  color: $white;
+
+  @media (max-width: $tablet-width) {
+    margin: 5px 0 31px;
+    font-size: 18px;
+    color: $black;
+  }
+
+  @media (max-width: $mobile-width) {
+    margin: 5px 0 21px;
+    font-size: 18px;
+    color: $black;
+  }
+}
+
+.form input {
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 13px 30px 8px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: $dlack--lighter;
+  border: 1px solid $gray--darker;
+  border-radius: 4px;
+}
+
+.form__button {
+  width: 100%;
+  margin: 0;
+  padding: 19px 0 15px;
+  text-align: center;
+  border: 0;
+  border-radius: 6px;
+  background-color: $accent;
+  cursor: pointer;
+}
