@@ -41,9 +41,13 @@
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
-  color: $dlack--lighter;
+  color: $black--lighter;
   border: 1px solid $gray--darker;
   border-radius: 4px;
+
+  @media (max-width: $mobile-width) {
+    padding: 13px 26px 8px;
+  }
 }
 
 .form__button {
@@ -55,4 +59,8 @@
   border-radius: 6px;
   background-color: $accent;
   cursor: pointer;
+
+  @media (max-width: $mobile-width) {
+    padding: 18px 0 15px;
+  }
 }

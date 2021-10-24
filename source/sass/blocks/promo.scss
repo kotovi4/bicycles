@@ -24,6 +24,7 @@
     &::before {
       height: 340px;
       background-image: url("../img/promo-bg-tablet@1x.jpg");
+      background-position: center;
 
       @media (min-resolution: 1.5dppx) {
         background-image: url("../img/promo-bg-tablet@2x.jpg");

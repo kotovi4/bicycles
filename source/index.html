@@ -28,7 +28,7 @@
           <a class="main-nav__link" href="#about-us">О нас</a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Виды велосипедов</a>
+          <a class="main-nav__link" href="#types">Виды велосипедов</a>
         </li>
         <li class="main-nav__item">
           <a class="main-nav__link" href="#">Видео про велосипеды</a>
@@ -85,6 +85,39 @@
         <li class="about-us__item">
           <span>04</span>
           <p>Профессиональные консультации!</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="types" id="types">
+      <h2 class="types__title">Виды велосипедов</h2>
+      <ul class="types__list">
+        <li class="types__item types__item--road">
+          <picture>
+            <source type="image/webp" media="(max-width: 1023px)" srcset="img/road-bike-tablet@1x.webp, img/road-bike-tablet@2x.webp 2x">
+            <source type="image/webp" srcset="img/road-bike-desktop@1x.webp, img/road-bike-desktop@2x.webp 2x">
+            <source media="(max-width: 1023px)" srcset="img/road-bike-tablet@1x.jpg, img/road-bike-tablet@2x.jpg 2x">
+            <img class="types__img" src="img/road-bike-desktop@1x.jpg" srcset="img/road-bike-desktop@2x.jpg 2x" width="342" height="503" alt="Дорожный велосипед">
+          </picture>
+          <p class="types__text">Дорожный велосипед</p>
+        </li>
+        <li class="types__item types__item--mountain">
+          <picture>
+            <source type="image/webp" media="(max-width: 1023px)" srcset="img/mountain-bike-tablet@1x.webp, img/mountain-bike-tablet@2x.webp 2x">
+            <source type="image/webp" srcset="img/mountain-bike-desktop@1x.webp, img/mountain-bike-desktop@2x.webp 2x">
+            <source media="(max-width: 1023px)" srcset="img/mountain-bike-tablet@1x.jpg, img/mountain-bike-tablet@2x.jpg 2x">
+            <img class="types__img" src="img/mountain-bike-desktop@1x.jpg" srcset="img/mountain-bike-desktop@2x.jpg 2x" width="342" height="566" alt="Горный велосипед">
+          </picture>
+          <p class="types__text">Горный велосипед</p>
+        </li>
+        <li class="types__item types__item--child">
+          <picture>
+            <source type="image/webp" media="(max-width: 1023px)" srcset="img/child-bike-tablet@1x.webp, img/child-bike-tablet@2x.webp 2x">
+            <source type="image/webp" srcset="img/child-bike-desktop@1x.webp, img/child-bike-desktop@2x.webp 2x">
+            <source media="(max-width: 1023px)" srcset="img/child-bike-tablet@1x.jpg, img/child-bike-tablet@2x.jpg 2x">
+            <img class="types__img" src="img/child-bike-desktop@1x.jpg" srcset="img/child-bike-desktop@2x.jpg 2x" width="342" height="513" alt="Горный велосипед">
+          </picture>
+          <p class="types__text">Детский велосипед</p>
         </li>
       </ul>
     </section>
