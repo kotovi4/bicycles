@@ -13,7 +13,7 @@
   }
 }
 
-.intro__title {
+.intro h3 {
   padding: 0;
   margin: 27px 0 23px;
   font-weight: 700;
@@ -29,7 +29,7 @@
   }
 }
 
-.intro__text {
+.intro p {
   margin: 0;
   font-weight: 300;
   font-size: 20px;
@@ -42,7 +42,7 @@
   }
 }
 
-.intro__logo {
+.intro a {
   @media (max-width: $tablet-width) {
     display: none;
   }
