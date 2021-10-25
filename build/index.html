@@ -54,13 +54,13 @@
           <h3>Мы продаем велосипеды</h3>
           <p>Наш магазин отбирает только самые лучшие велосипеды для продажи</p>
         </div>
-        <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" autocomplete="off">
+        <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" enctype="multipart/form-data" autocomplete="off">
           <h3>Заполните поля ниже и мы подберем велосипед Вашей мечты</h3>
           <label class="visually-hidden" for="name">Имя</label>
-          <input name="name" id="name" type="text" placeholder="Введите Ваше Имя">
+          <input name="name" id="name" type="text" minlength="1" placeholder="Введите Ваше Имя" required="">
           <label class="visually-hidden" for="tel">Телефон</label>
-          <input name="tel" id="tel" type="tel" maxlength="10" placeholder="Введите Ваш номер телефона" required="">
-          <button>Подобрать велосипед мечты</button>
+          <input name="tel" id="tel" type="tel" maxlength="12" placeholder="Введите Ваш номер телефона" required="">
+          <button type="submit">Подобрать велосипед мечты</button>
         </form>
       </div>
     </section>
@@ -124,6 +124,11 @@
       <h2>Видео про велосипеды</h2>
       <p>В этом видео мы подробно расскажем про особенности выбора велосипеда для себя.</p>
       <picture>
+        <source type="image/webp" media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.webp, img/video-bike-img-mobile@2x.webp 2x">
+        <source type="image/webp" media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.webp, img/video-bike-img-tablet@2x.webp 2x">
+        <source type="image/webp" srcset="img/video-bike-img-desktop@1x.webp, img/video-bike-img-desktop@2x.webp 2x">
+        <source media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.jpg, img/video-bike-img-mobile@2x.jpg 2x">
+        <source media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.jpg, img/video-bike-img-tablet@2x.jpg 2x">
         <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
       </picture>
       <button arial-label="Кнопка воспроизведения видео">
