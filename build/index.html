@@ -47,7 +47,7 @@
         <div class="promo__intro intro" id="intro">
           <h2 class="visually-hidden">Подбор велосипеда</h2>
           <a href="index.html">
-            <svg class="intro__logo-img" width="68" height="22">
+            <svg width="68" height="22">
               <use xlink:href="img/sprite_auto.svg#icon-logo"></use>
             </svg>
           </a>
@@ -119,26 +119,41 @@
         </li>
       </ul>
     </section>
+
+    <section class="video" id="video">
+      <h2>Видео про велосипеды</h2>
+      <p>В этом видео мы подробно расскажем про особенности выбора велосипеда для себя.</p>
+      <picture>
+        <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
+      </picture>
+      <button arial-label="Кнопка воспроизведения видео">
+        <svg width="65" height="65">
+          <use xlink:href="img/sprite_auto.svg#icon-play"></use>
+        </svg>
+      </button>
+    </section>
   </main>
   <footer class="page-footer" id="contacts">
     <div class="page-footer__map map">
-      <h2 class="map__title">Как нас найти?</h2>
-      <p class="map__text">Мы находимся по адресу: Санкт-Петербург, ул. Большая Конюшенная, д. 19</p>
-      <img class="map__img" src="img/map-img-desktop@1x.png" width="957" height="530" alt="Санкт-Петербург, ул. Большая Конюшенная, д. 19/8">
+      <h2>Как нас найти?</h2>
+      <p>Мы находимся по адресу: Санкт-Петербург, ул. Большая Конюшенная, д. 19</p>
+      <div class="map__container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6036253003151!2d30.320858716211177!3d59.938719169054096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca145cc1%3A0x42b32648d8238007!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LzgsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1624537349252!5m2!1sru!2sru" width="320" height="250" tabindex="9" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
 
     <div class="page-footer__contacts contacts">
-      <a class="contacts_email" href="mailto:puteshestviemechta@gmail.ru">
-        <svg width="26" height="20">
+      <a class="contacts__item contacts__item--email" href="mailto:puteshestviemechta@gmail.ru">
+        <svg class="contacts__img" width="26" height="20">
           <use xlink:href="img/sprite_auto.svg#icon-email"></use>
         </svg>
-        <p class="contacts_text">puteshestviemechta@gmail.ru</p>
+        <p class="contacts__text">puteshestviemechta@gmail.ru</p>
       </a>
-      <a class="contacts_tel" href="tel:+749978468446">
-        <svg width="22" height="23">
+      <a class="contacts__item contacts__item--tel" href="tel:+749978468446">
+        <svg class="contacts__img" width="22" height="23">
           <use xlink:href="img/sprite_auto.svg#icon-phone"></use>
         </svg>
-        <p class="contacts_text">+7 (499) -784-684-46</p>
+        <p class="contacts__text">+7 (499) -784-684-46</p>
       </a>
     </div>
   </footer>

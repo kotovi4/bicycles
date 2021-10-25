@@ -6,7 +6,11 @@
   background-color: $types-bg-color;
 
   @media (max-width: 1380px) {
-    padding-bottom: 48px;
+    padding-bottom: 31px;
+  }
+
+  @media (max-width: $mobile-width) {
+    padding-bottom: 13px;
   }
 }
 
