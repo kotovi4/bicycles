@@ -1,6 +1,6 @@
 {
   "name": "bicycles",
-  "version": "1.0.0",
+  "private": true,
   "description": "Велосипеды Moon // Акселератор - HTML Academy",
   "homepage": "https://kotovi4.github.io/bicycles",
   "devDependencies": {
@@ -34,7 +34,8 @@
     "start": "gulp start",
     "webp": "gulp webp",
     "sprite": "gulp sprite",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "gh-pages": "push-dir --dir=build --branch=gh-pages"
   },
   "browserslist": [
     "last 2 versions",
