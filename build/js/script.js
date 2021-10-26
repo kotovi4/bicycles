@@ -76,7 +76,7 @@ form.addEventListener('submit', (evt) => {
   }
 });
 
-//Закрыть модальное окно
+//Закрыть модальное окно и сбросить инпуты
 modalClose.onclick = () => {
   modal.classList.remove('modal--show');
   form.reset();
