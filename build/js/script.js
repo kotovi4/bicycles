@@ -7,6 +7,9 @@ const mainNavList = document.querySelector('.main-nav-list');
 const form = document.querySelector('.form');
 const nameInput = document.querySelector('#name');
 const telInput = document.querySelector('#tel');
+const formButton = form.querySelector('.form__button')
+const modal = document.querySelector('.modal');
+const modalClose = modal.querySelector('.modal__close');
 
 
 pageHeader.classList.remove('page-header--nojs');
@@ -43,57 +46,40 @@ for (const smoothLink of smoothLinks) {
   }
 }
 
-// Валидация формы
-if (nameInput) {
-  nameInput.addEventListener('invalid', () => {
-    if (nameInput.validity.valueMissing) {
-      nameInput.setCustomValidity('Обязательное поле');
-    } else {
-      nameInput.setCustomValidity('');
-    }
-  });
-}
+//Отправка и валидация формы
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
 
-if (telInput) {
-  telInput.addEventListener('invalid', () => {
-    if (telInput.validity.valueMissing || telInput.validity.patternMismatch) {
-      telInput.setCustomValidity('Неверный номер телефона');
-    } else {
-      telInput.setCustomValidity('');
-    }
-  });
-}
+  //Валидация полей формы
+  if (nameInput && telInput) {
+    nameInput.addEventListener('input', function () {
+      if (nameInput.validity.patternMismatch) {
+        nameInput.setCustomValidity('Введите имя русскими буквами');
+      } else {
+        nameInput.setCustomValidity('');
+      }
+    });
 
-let isStorageSupport = true;
-let storageName = '';
-let storageTel = '';
+    telInput.addEventListener('input', function () {
+      if (telInput.validity.patternMismatch) {
+        telInput.setCustomValidity('Введите телефон в формате +7 ХХХ ХХХ ХХ ХХ');
+      } else {
+        telInput.setCustomValidity('');
+      }
+    });
 
-try {
-  storageName = localStorage.getItem('name');
-  storageTel = localStorage.getItem('tel');
-} catch (err) {
-  isStorageSupport = false;
-}
+    formButton.addEventListener('click', function () {
+      localStorage.setItem(nameInput.name, nameInput.value);
+      localStorage.setItem(telInput.name, telInput.value);
+      modal.classList.add('modal--show');
+    });
+  }
+});
 
-if (storageName && nameInput) {
-  nameInput.value = storageName;
-}
-
-if (storageTel && telInput) {
-  telInput.value = storageTel;
-}
-
-// Событие отправки формы
-if (form) {
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-
-    if (isStorageSupport) {
-      localStorage.setItem('name', nameInput.value);
-      localStorage.setItem('tel', telInput.value);
-    }
-
-    nameInput.value = '';
-    telInput.value = '';
-  });
+//Закрыть модальное окно
+modalClose.onclick = () => {
+  modal.classList.remove('modal--show');
+  form.reset();
+  telInput.reset();
+  nameInput.reset();
 }

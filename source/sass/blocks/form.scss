@@ -59,6 +59,14 @@
   border-radius: 6px;
   background-color: $accent;
   cursor: pointer;
+  transition-timing-function: ease-out;
+  transition-duration: 0.3s;
+
+  &:hover,
+  &:active {
+    background-color: $button-active-color;
+    transform: translateY(3px);
+  }
 
   @media (max-width: $mobile-width) {
     padding: 18px 0 15px;

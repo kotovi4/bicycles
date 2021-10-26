@@ -57,10 +57,10 @@
         <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" enctype="multipart/form-data" autocomplete="off">
           <h3>Заполните поля ниже и мы подберем велосипед Вашей мечты</h3>
           <label class="visually-hidden" for="name">Имя</label>
-          <input name="name" id="name" type="text" minlength="1" placeholder="Введите Ваше Имя" required="">
+          <input name="name" id="name" type="text" placeholder="Введите Ваше Имя" pattern="^[А-Яа-яЁё\s]+$" required="">
           <label class="visually-hidden" for="tel">Телефон</label>
-          <input name="tel" id="tel" type="tel" maxlength="12" placeholder="Введите Ваш номер телефона" required="">
-          <button type="submit">Подобрать велосипед мечты</button>
+          <input name="tel" id="tel" type="tel" maxlength="12" placeholder="Введите Ваш номер телефона" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required="">
+          <button class="form__button" type="submit">Подобрать велосипед мечты</button>
         </form>
       </div>
     </section>
@@ -131,7 +131,7 @@
         <source media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.jpg, img/video-bike-img-tablet@2x.jpg 2x">
         <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
       </picture>
-      <button arial-label="Кнопка воспроизведения видео">
+      <button value="Кнопка воспроизведения видео">
         <svg width="65" height="65">
           <use xlink:href="img/sprite_auto.svg#icon-play"></use>
         </svg>
@@ -162,6 +162,16 @@
       </a>
     </div>
   </footer>
+  <section class="modal">
+    <div class="modal__card">
+      <h2 class="visually-hidden">Форма отправлена</h2>
+      <p class="modal__success">Форма успешно отправлена, спасибо! :)</p>
+      <button class="modal__close" type="button" aria-label="Закрыть">
+        <span class="modal__close-line"></span>
+      </button>
+    </div>
+  </section>
+
   <script src="js/script.js"></script>
 </body>
 </html>

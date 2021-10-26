@@ -7,6 +7,9 @@ const mainNavList = document.querySelector('.main-nav-list');
 const form = document.querySelector('.form');
 const nameInput = document.querySelector('#name');
 const telInput = document.querySelector('#tel');
+const formButton = form.querySelector('.form__button')
+const modal = document.querySelector('.modal');
+const modalClose = modal.querySelector('.modal__close');
 
 
 pageHeader.classList.remove('page-header--nojs');
@@ -41,4 +44,42 @@ for (const smoothLink of smoothLinks) {
       }
     });
   }
+}
+
+//Отправка и валидация формы
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  //Валидация полей формы
+  if (nameInput && telInput) {
+    nameInput.addEventListener('input', function () {
+      if (nameInput.validity.patternMismatch) {
+        nameInput.setCustomValidity('Введите имя русскими буквами');
+      } else {
+        nameInput.setCustomValidity('');
+      }
+    });
+
+    telInput.addEventListener('input', function () {
+      if (telInput.validity.patternMismatch) {
+        telInput.setCustomValidity('Введите телефон в формате +7 ХХХ ХХХ ХХ ХХ');
+      } else {
+        telInput.setCustomValidity('');
+      }
+    });
+
+    formButton.addEventListener('click', function () {
+      localStorage.setItem(nameInput.name, nameInput.value);
+      localStorage.setItem(telInput.name, telInput.value);
+      modal.classList.add('modal--show');
+    });
+  }
+});
+
+//Закрыть модальное окно и сбросить инпуты
+modalClose.onclick = () => {
+  modal.classList.remove('modal--show');
+  form.reset();
+  telInput.reset();
+  nameInput.reset();
 }
