@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Главная страница || Велосипеды Moon</title>
-  <link rel="preload" href="./fonts/montserrat-light.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="preload" href="./fonts/opensans-light.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="./fonts/opensans-regular.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="./fonts/opensans-semibold.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="preload" href="./fonts/opensans-bold.woff2" as="font" type="font/woff2" crossorigin="">
@@ -92,27 +92,39 @@
       <ul class="types__list">
         <li class="types__item types__item--road">
           <picture>
+            <!-- 1x: 270px; 2x: 540px -->
             <source type="image/webp" media="(max-width: 1023px)" srcset="img/road-bike-tablet@1x.webp, img/road-bike-tablet@2x.webp 2x">
+            <!-- 1x: 342px; 2x: 684px -->
             <source type="image/webp" srcset="img/road-bike-desktop@1x.webp, img/road-bike-desktop@2x.webp 2x">
+            <!-- 1x: 270px; 2x: 540px -->
             <source media="(max-width: 1023px)" srcset="img/road-bike-tablet@1x.jpg, img/road-bike-tablet@2x.jpg 2x">
+            <!-- 1x: 342px; 2x: 684px -->
             <img class="types__img" src="img/road-bike-desktop@1x.jpg" srcset="img/road-bike-desktop@2x.jpg 2x" width="342" height="503" alt="Дорожный велосипед">
           </picture>
           <p class="types__text">Дорожный велосипед</p>
         </li>
         <li class="types__item types__item--mountain">
           <picture>
+            <!-- 1x: 270px; 2x: 540px -->
             <source type="image/webp" media="(max-width: 1023px)" srcset="img/mountain-bike-tablet@1x.webp, img/mountain-bike-tablet@2x.webp 2x">
+            <!-- 1x: 342px; 2x: 684px -->
             <source type="image/webp" srcset="img/mountain-bike-desktop@1x.webp, img/mountain-bike-desktop@2x.webp 2x">
+            <!-- 1x: 270px; 2x: 540px -->
             <source media="(max-width: 1023px)" srcset="img/mountain-bike-tablet@1x.jpg, img/mountain-bike-tablet@2x.jpg 2x">
+            <!-- 1x: 342px; 2x: 684px -->
             <img class="types__img" src="img/mountain-bike-desktop@1x.jpg" srcset="img/mountain-bike-desktop@2x.jpg 2x" width="342" height="566" alt="Горный велосипед">
           </picture>
           <p class="types__text">Горный велосипед</p>
         </li>
         <li class="types__item types__item--child">
           <picture>
+            <!-- 1x: 270px; 2x: 540px -->
             <source type="image/webp" media="(max-width: 1023px)" srcset="img/child-bike-tablet@1x.webp, img/child-bike-tablet@2x.webp 2x">
+            <!-- 1x: 342px; 2x: 684px -->
             <source type="image/webp" srcset="img/child-bike-desktop@1x.webp, img/child-bike-desktop@2x.webp 2x">
+            <!-- 1x: 270px; 2x: 540px -->
             <source media="(max-width: 1023px)" srcset="img/child-bike-tablet@1x.jpg, img/child-bike-tablet@2x.jpg 2x">
+            <!-- 1x: 342px; 2x: 684px -->
             <img class="types__img" src="img/child-bike-desktop@1x.jpg" srcset="img/child-bike-desktop@2x.jpg 2x" width="342" height="513" alt="Горный велосипед">
           </picture>
           <p class="types__text">Детский велосипед</p>
@@ -124,11 +136,17 @@
       <h2>Видео про велосипеды</h2>
       <p>В этом видео мы подробно расскажем про особенности выбора велосипеда для себя.</p>
       <picture>
+        <!-- 1x: 288px; 2x: 576px -->
         <source type="image/webp" media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.webp, img/video-bike-img-mobile@2x.webp 2x">
+        <!-- 1x: 503px; 2x: 1006px -->
         <source type="image/webp" media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.webp, img/video-bike-img-tablet@2x.webp 2x">
+        <!-- 1x: 929x; 2x: 1858px -->
         <source type="image/webp" srcset="img/video-bike-img-desktop@1x.webp, img/video-bike-img-desktop@2x.webp 2x">
+        <!-- 1x: 288px; 2x: 576px -->
         <source media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.jpg, img/video-bike-img-mobile@2x.jpg 2x">
+        <!-- 1x: 503px; 2x: 1006px -->
         <source media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.jpg, img/video-bike-img-tablet@2x.jpg 2x">
+        <!-- 1x: 929px; 2x: 1858px -->
         <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
       </picture>
       <button value="Кнопка воспроизведения видео">
