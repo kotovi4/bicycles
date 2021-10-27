@@ -1,22 +1,24 @@
-"use strict";
+// @ts-nocheck
 
-const rangeOperators = [">=", "<=", ">", "<", "="];
-const styleSearch = require("style-search");
+'use strict';
 
-module.exports = function(atRule, cb) {
-  if (atRule.name.toLowerCase() !== "media") {
-    return;
-  }
+const rangeOperators = ['>=', '<=', '>', '<', '='];
+const styleSearch = require('style-search');
 
-  const params = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
+module.exports = function (atRule, cb) {
+	if (atRule.name.toLowerCase() !== 'media') {
+		return;
+	}
 
-  styleSearch({ source: params, target: rangeOperators }, match => {
-    const before = params[match.startIndex - 1];
+	const params = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
-    if (before === ">" || before === "<") {
-      return;
-    }
+	styleSearch({ source: params, target: rangeOperators }, (match) => {
+		const before = params[match.startIndex - 1];
 
-    cb(match, params, atRule);
-  });
+		if (before === '>' || before === '<') {
+			return;
+		}
+
+		cb(match, params, atRule);
+	});
 };

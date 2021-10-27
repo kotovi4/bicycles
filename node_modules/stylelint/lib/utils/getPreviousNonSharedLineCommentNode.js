@@ -1,32 +1,40 @@
-/* @flow */
-"use strict";
+'use strict';
 
-const _ = require("lodash");
+const _ = require('lodash');
 
-function getNodeLine(node /*:: ?: postcss$node*/) /*: number | void*/ {
-  return _.get(node, "source.start.line");
+/** @typedef {import('postcss').Node} Node */
+
+/**
+ * @param {Node} node
+ */
+function getNodeLine(node) {
+	return _.get(node, 'source.start.line');
 }
 
-module.exports = function getPreviousNonSharedLineCommentNode(
-  node /*:: ?: postcss$node*/
-) /*: postcss$node | void*/ {
-  if (node === undefined) {
-    return undefined;
-  }
+/**
+ * @param {import('postcss').Node | void} node
+ * @returns {Node | void}
+ */
+module.exports = function getPreviousNonSharedLineCommentNode(node) {
+	if (node === undefined) {
+		return undefined;
+	}
 
-  const previousNode = node.prev();
+	const previousNode = node.prev();
 
-  if (_.get(previousNode, "type") !== "comment") {
-    return previousNode;
-  }
+	if (!previousNode || _.get(previousNode, 'type') !== 'comment') {
+		return previousNode;
+	}
 
-  if (
-    getNodeLine(node) === getNodeLine(previousNode) ||
-    (previousNode !== undefined &&
-      getNodeLine(previousNode) === getNodeLine(previousNode.prev()))
-  ) {
-    return getPreviousNonSharedLineCommentNode(previousNode);
-  }
+	if (getNodeLine(node) === getNodeLine(previousNode)) {
+		return getPreviousNonSharedLineCommentNode(previousNode);
+	}
 
-  return previousNode;
+	const previousNode2 = previousNode.prev();
+
+	if (previousNode2 && getNodeLine(previousNode) === getNodeLine(previousNode2)) {
+		return getPreviousNonSharedLineCommentNode(previousNode);
+	}
+
+	return previousNode;
 };

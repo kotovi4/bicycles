@@ -1,140 +1,138 @@
-"use strict";
+// @ts-nocheck
 
-const addEmptyLineBefore = require("../../utils/addEmptyLineBefore");
-const blockString = require("../../utils/blockString");
-const hasEmptyLine = require("../../utils/hasEmptyLine");
-const isAfterComment = require("../../utils/isAfterComment");
-const isAfterStandardPropertyDeclaration = require("../../utils/isAfterStandardPropertyDeclaration");
-const isCustomProperty = require("../../utils/isCustomProperty");
-const isFirstNested = require("../../utils/isFirstNested");
-const isSingleLineString = require("../../utils/isSingleLineString");
-const isStandardSyntaxDeclaration = require("../../utils/isStandardSyntaxDeclaration");
-const optionsMatches = require("../../utils/optionsMatches");
-const removeEmptyLinesBefore = require("../../utils/removeEmptyLinesBefore");
-const report = require("../../utils/report");
-const ruleMessages = require("../../utils/ruleMessages");
-const validateOptions = require("../../utils/validateOptions");
+'use strict';
 
-const ruleName = "declaration-empty-line-before";
+const addEmptyLineBefore = require('../../utils/addEmptyLineBefore');
+const blockString = require('../../utils/blockString');
+const hasEmptyLine = require('../../utils/hasEmptyLine');
+const isAfterComment = require('../../utils/isAfterComment');
+const isAfterStandardPropertyDeclaration = require('../../utils/isAfterStandardPropertyDeclaration');
+const isCustomProperty = require('../../utils/isCustomProperty');
+const isFirstNested = require('../../utils/isFirstNested');
+const isFirstNodeOfRoot = require('../../utils/isFirstNodeOfRoot');
+const isSingleLineString = require('../../utils/isSingleLineString');
+const isStandardSyntaxDeclaration = require('../../utils/isStandardSyntaxDeclaration');
+const optionsMatches = require('../../utils/optionsMatches');
+const removeEmptyLinesBefore = require('../../utils/removeEmptyLinesBefore');
+const report = require('../../utils/report');
+const ruleMessages = require('../../utils/ruleMessages');
+const validateOptions = require('../../utils/validateOptions');
+
+const ruleName = 'declaration-empty-line-before';
 
 const messages = ruleMessages(ruleName, {
-  expected: "Expected empty line before declaration",
-  rejected: "Unexpected empty line before declaration"
+	expected: 'Expected empty line before declaration',
+	rejected: 'Unexpected empty line before declaration',
 });
 
-const rule = function(expectation, options, context) {
-  return (root, result) => {
-    const validOptions = validateOptions(
-      result,
-      ruleName,
-      {
-        actual: expectation,
-        possible: ["always", "never"]
-      },
-      {
-        actual: options,
-        possible: {
-          except: ["first-nested", "after-comment", "after-declaration"],
-          ignore: [
-            "after-comment",
-            "after-declaration",
-            "first-nested",
-            "inside-single-line-block"
-          ]
-        },
-        optional: true
-      }
-    );
+function rule(expectation, options, context) {
+	return (root, result) => {
+		const validOptions = validateOptions(
+			result,
+			ruleName,
+			{
+				actual: expectation,
+				possible: ['always', 'never'],
+			},
+			{
+				actual: options,
+				possible: {
+					except: ['first-nested', 'after-comment', 'after-declaration'],
+					ignore: [
+						'after-comment',
+						'after-declaration',
+						'first-nested',
+						'inside-single-line-block',
+					],
+				},
+				optional: true,
+			},
+		);
 
-    if (!validOptions) {
-      return;
-    }
+		if (!validOptions) {
+			return;
+		}
 
-    root.walkDecls(decl => {
-      const prop = decl.prop;
-      const parent = decl.parent;
+		root.walkDecls((decl) => {
+			const prop = decl.prop;
+			const parent = decl.parent;
 
-      if (!isStandardSyntaxDeclaration(decl)) {
-        return;
-      }
+			// Ignore the first node
+			if (isFirstNodeOfRoot(decl)) {
+				return;
+			}
 
-      if (isCustomProperty(prop)) {
-        return;
-      }
+			if (!isStandardSyntaxDeclaration(decl)) {
+				return;
+			}
 
-      // Optionally ignore the node if a comment precedes it
-      if (
-        optionsMatches(options, "ignore", "after-comment") &&
-        isAfterComment(decl)
-      ) {
-        return;
-      }
+			if (isCustomProperty(prop)) {
+				return;
+			}
 
-      // Optionally ignore the node if a declaration precedes it
-      if (
-        optionsMatches(options, "ignore", "after-declaration") &&
-        isAfterStandardPropertyDeclaration(decl)
-      ) {
-        return;
-      }
+			// Optionally ignore the node if a comment precedes it
+			if (optionsMatches(options, 'ignore', 'after-comment') && isAfterComment(decl)) {
+				return;
+			}
 
-      // Optionally ignore the node if it is the first nested
-      if (
-        optionsMatches(options, "ignore", "first-nested") &&
-        isFirstNested(decl)
-      ) {
-        return;
-      }
+			// Optionally ignore the node if a declaration precedes it
+			if (
+				optionsMatches(options, 'ignore', 'after-declaration') &&
+				isAfterStandardPropertyDeclaration(decl)
+			) {
+				return;
+			}
 
-      // Optionally ignore nodes inside single-line blocks
-      if (
-        optionsMatches(options, "ignore", "inside-single-line-block") &&
-        isSingleLineString(blockString(parent))
-      ) {
-        return;
-      }
+			// Optionally ignore the node if it is the first nested
+			if (optionsMatches(options, 'ignore', 'first-nested') && isFirstNested(decl)) {
+				return;
+			}
 
-      let expectEmptyLineBefore = expectation === "always" ? true : false;
+			// Optionally ignore nodes inside single-line blocks
+			if (
+				optionsMatches(options, 'ignore', 'inside-single-line-block') &&
+				isSingleLineString(blockString(parent))
+			) {
+				return;
+			}
 
-      // Optionally reverse the expectation if any exceptions apply
-      if (
-        (optionsMatches(options, "except", "first-nested") &&
-          isFirstNested(decl)) ||
-        (optionsMatches(options, "except", "after-comment") &&
-          isAfterComment(decl)) ||
-        (optionsMatches(options, "except", "after-declaration") &&
-          isAfterStandardPropertyDeclaration(decl))
-      ) {
-        expectEmptyLineBefore = !expectEmptyLineBefore;
-      }
+			let expectEmptyLineBefore = expectation === 'always';
 
-      // Check for at least one empty line
-      const hasEmptyLineBefore = hasEmptyLine(decl.raws.before);
+			// Optionally reverse the expectation if any exceptions apply
+			if (
+				(optionsMatches(options, 'except', 'first-nested') && isFirstNested(decl)) ||
+				(optionsMatches(options, 'except', 'after-comment') && isAfterComment(decl)) ||
+				(optionsMatches(options, 'except', 'after-declaration') &&
+					isAfterStandardPropertyDeclaration(decl))
+			) {
+				expectEmptyLineBefore = !expectEmptyLineBefore;
+			}
 
-      // Return if the expectation is met
-      if (expectEmptyLineBefore === hasEmptyLineBefore) {
-        return;
-      }
+			// Check for at least one empty line
+			const hasEmptyLineBefore = hasEmptyLine(decl.raws.before);
 
-      // Fix
-      if (context.fix) {
-        if (expectEmptyLineBefore) {
-          addEmptyLineBefore(decl, context.newline);
-        } else {
-          removeEmptyLinesBefore(decl, context.newline);
-        }
+			// Return if the expectation is met
+			if (expectEmptyLineBefore === hasEmptyLineBefore) {
+				return;
+			}
 
-        return;
-      }
+			// Fix
+			if (context.fix) {
+				if (expectEmptyLineBefore) {
+					addEmptyLineBefore(decl, context.newline);
+				} else {
+					removeEmptyLinesBefore(decl, context.newline);
+				}
 
-      const message = expectEmptyLineBefore
-        ? messages.expected
-        : messages.rejected;
+				return;
+			}
 
-      report({ message, node: decl, result, ruleName });
-    });
-  };
-};
+			const message = expectEmptyLineBefore ? messages.expected : messages.rejected;
+
+			report({ message, node: decl, result, ruleName });
+		});
+	};
+}
 
 rule.ruleName = ruleName;
 rule.messages = messages;

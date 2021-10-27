@@ -1,37 +1,39 @@
-"use strict";
+// @ts-nocheck
 
-const atRuleNameSpaceChecker = require("../atRuleNameSpaceChecker");
-const ruleMessages = require("../../utils/ruleMessages");
-const validateOptions = require("../../utils/validateOptions");
-const whitespaceChecker = require("../../utils/whitespaceChecker");
+'use strict';
 
-const ruleName = "at-rule-name-newline-after";
+const atRuleNameSpaceChecker = require('../atRuleNameSpaceChecker');
+const ruleMessages = require('../../utils/ruleMessages');
+const validateOptions = require('../../utils/validateOptions');
+const whitespaceChecker = require('../../utils/whitespaceChecker');
+
+const ruleName = 'at-rule-name-newline-after';
 
 const messages = ruleMessages(ruleName, {
-  expectedAfter: name => `Expected newline after at-rule name "${name}"`
+	expectedAfter: (name) => `Expected newline after at-rule name "${name}"`,
 });
 
-const rule = function(expectation) {
-  const checker = whitespaceChecker("newline", expectation, messages);
+function rule(expectation) {
+	const checker = whitespaceChecker('newline', expectation, messages);
 
-  return (root, result) => {
-    const validOptions = validateOptions(result, ruleName, {
-      actual: expectation,
-      possible: ["always", "always-multi-line"]
-    });
+	return (root, result) => {
+		const validOptions = validateOptions(result, ruleName, {
+			actual: expectation,
+			possible: ['always', 'always-multi-line'],
+		});
 
-    if (!validOptions) {
-      return;
-    }
+		if (!validOptions) {
+			return;
+		}
 
-    atRuleNameSpaceChecker({
-      root,
-      result,
-      locationChecker: checker.afterOneOnly,
-      checkedRuleName: ruleName
-    });
-  };
-};
+		atRuleNameSpaceChecker({
+			root,
+			result,
+			locationChecker: checker.afterOneOnly,
+			checkedRuleName: ruleName,
+		});
+	};
+}
 
 rule.ruleName = ruleName;
 rule.messages = messages;

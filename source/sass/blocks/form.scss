@@ -6,7 +6,7 @@
     margin: 0 auto;
   }
 
-  @media (max-width: $mobile-width){
+  @media (max-width: $mobile-width) {
     padding-top: 135px;
     width: 288px;
   }
@@ -18,7 +18,7 @@
   font-size: 17px;
   line-height: 28px;
   text-align: center;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.05em;
   color: $white;
 
   @media (max-width: $tablet-width) {

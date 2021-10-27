@@ -1,37 +1,39 @@
-"use strict";
+// @ts-nocheck
 
-const atRuleParamIndex = require("../utils/atRuleParamIndex");
-const report = require("../utils/report");
-const styleSearch = require("style-search");
+'use strict';
 
-module.exports = function(opts) {
-  opts.root.walkAtRules(/^media$/i, atRule => {
-    const params = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
+const atRuleParamIndex = require('../utils/atRuleParamIndex');
+const report = require('../utils/report');
+const styleSearch = require('style-search');
 
-    styleSearch({ source: params, target: ":" }, match => {
-      checkColon(params, match.startIndex, atRule);
-    });
-  });
+module.exports = function (opts) {
+	opts.root.walkAtRules(/^media$/i, (atRule) => {
+		const params = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
-  function checkColon(source, index, node) {
-    opts.locationChecker({
-      source,
-      index,
-      err: m => {
-        const colonIndex = index + atRuleParamIndex(node);
+		styleSearch({ source: params, target: ':' }, (match) => {
+			checkColon(params, match.startIndex, atRule);
+		});
+	});
 
-        if (opts.fix && opts.fix(node, colonIndex)) {
-          return;
-        }
+	function checkColon(source, index, node) {
+		opts.locationChecker({
+			source,
+			index,
+			err: (m) => {
+				const colonIndex = index + atRuleParamIndex(node);
 
-        report({
-          message: m,
-          node,
-          index: colonIndex,
-          result: opts.result,
-          ruleName: opts.checkedRuleName
-        });
-      }
-    });
-  }
+				if (opts.fix && opts.fix(node, colonIndex)) {
+					return;
+				}
+
+				report({
+					message: m,
+					node,
+					index: colonIndex,
+					result: opts.result,
+					ruleName: opts.checkedRuleName,
+				});
+			},
+		});
+	}
 };

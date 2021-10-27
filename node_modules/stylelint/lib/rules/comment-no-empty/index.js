@@ -1,43 +1,45 @@
-"use strict";
+// @ts-nocheck
 
-const report = require("../../utils/report");
-const ruleMessages = require("../../utils/ruleMessages");
-const validateOptions = require("../../utils/validateOptions");
+'use strict';
 
-const ruleName = "comment-no-empty";
+const report = require('../../utils/report');
+const ruleMessages = require('../../utils/ruleMessages');
+const validateOptions = require('../../utils/validateOptions');
+
+const ruleName = 'comment-no-empty';
 
 const messages = ruleMessages(ruleName, {
-  rejected: "Unexpected empty comment"
+	rejected: 'Unexpected empty comment',
 });
 
-const rule = function(actual) {
-  return (root, result) => {
-    const validOptions = validateOptions(result, ruleName, { actual });
+function rule(actual) {
+	return (root, result) => {
+		const validOptions = validateOptions(result, ruleName, { actual });
 
-    if (!validOptions) {
-      return;
-    }
+		if (!validOptions) {
+			return;
+		}
 
-    root.walkComments(comment => {
-      // To ignore inline SCSS comments
-      if (comment.raws.inline || comment.inline) {
-        return;
-      }
+		root.walkComments((comment) => {
+			// To ignore inline SCSS comments
+			if (comment.raws.inline || comment.inline) {
+				return;
+			}
 
-      // To ignore comments that are not empty
-      if (comment.text && comment.text.length !== 0) {
-        return;
-      }
+			// To ignore comments that are not empty
+			if (comment.text && comment.text.length !== 0) {
+				return;
+			}
 
-      report({
-        message: messages.rejected,
-        node: comment,
-        result,
-        ruleName
-      });
-    });
-  };
-};
+			report({
+				message: messages.rejected,
+				node: comment,
+				result,
+				ruleName,
+			});
+		});
+	};
+}
 
 rule.ruleName = ruleName;
 rule.messages = messages;

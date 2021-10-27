@@ -1,49 +1,47 @@
-"use strict";
+// @ts-nocheck
 
-const _ = require("lodash");
-const functionArgumentsSearch = require("../../utils/functionArgumentsSearch");
-const isStandardSyntaxUrl = require("../../utils/isStandardSyntaxUrl");
-const report = require("../../utils/report");
-const ruleMessages = require("../../utils/ruleMessages");
-const validateOptions = require("../../utils/validateOptions");
+'use strict';
 
-const ruleName = "function-url-no-scheme-relative";
+const _ = require('lodash');
+const functionArgumentsSearch = require('../../utils/functionArgumentsSearch');
+const isStandardSyntaxUrl = require('../../utils/isStandardSyntaxUrl');
+const report = require('../../utils/report');
+const ruleMessages = require('../../utils/ruleMessages');
+const validateOptions = require('../../utils/validateOptions');
+
+const ruleName = 'function-url-no-scheme-relative';
 
 const messages = ruleMessages(ruleName, {
-  rejected: "Unexpected scheme-relative url"
+	rejected: 'Unexpected scheme-relative url',
 });
 
-const rule = function(actual) {
-  return (root, result) => {
-    const validOptions = validateOptions(result, ruleName, { actual });
+function rule(actual) {
+	return (root, result) => {
+		const validOptions = validateOptions(result, ruleName, { actual });
 
-    if (!validOptions) {
-      return;
-    }
+		if (!validOptions) {
+			return;
+		}
 
-    root.walkDecls(function(decl) {
-      functionArgumentsSearch(
-        decl.toString().toLowerCase(),
-        "url",
-        (args, index) => {
-          const url = _.trim(args, " '\"");
+		root.walkDecls((decl) => {
+			functionArgumentsSearch(decl.toString().toLowerCase(), 'url', (args, index) => {
+				const url = _.trim(args, ' \'"');
 
-          if (!isStandardSyntaxUrl(url) || url.indexOf("//") !== 0) {
-            return;
-          }
+				if (!isStandardSyntaxUrl(url) || !url.startsWith('//')) {
+					return;
+				}
 
-          report({
-            message: messages.rejected,
-            node: decl,
-            index,
-            result,
-            ruleName
-          });
-        }
-      );
-    });
-  };
-};
+				report({
+					message: messages.rejected,
+					node: decl,
+					index,
+					result,
+					ruleName,
+				});
+			});
+		});
+	};
+}
 
 rule.ruleName = ruleName;
 rule.messages = messages;

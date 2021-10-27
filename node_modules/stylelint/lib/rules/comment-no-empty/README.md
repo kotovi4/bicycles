@@ -2,13 +2,16 @@
 
 Disallow empty comments.
 
+<!-- prettier-ignore -->
 ```css
     /* */
 /** ↑
  * Comments like this */
 ```
 
-This rule ignores comments within selector and value lists.
+This rule ignores SCSS-like comments.
+
+**Caveat:** Comments within _selector and value lists_ are currently ignored.
 
 ## Options
 
@@ -16,26 +19,31 @@ This rule ignores comments within selector and value lists.
 
 The following patterns are considered violations:
 
+<!-- prettier-ignore -->
 ```css
 /**/
 ```
 
+<!-- prettier-ignore -->
 ```css
 /* */
 ```
 
+<!-- prettier-ignore -->
 ```css
 /*
 
  */
 ```
 
-The following patterns are *not* considered violations:
+The following patterns are _not_ considered violations:
 
+<!-- prettier-ignore -->
 ```css
 /* comment */
 ```
 
+<!-- prettier-ignore -->
 ```css
 /*
  * Multi-line Comment

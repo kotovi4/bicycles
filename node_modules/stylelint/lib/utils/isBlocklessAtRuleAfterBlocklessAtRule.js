@@ -1,23 +1,22 @@
-/* @flow */
-"use strict";
+'use strict';
 
-const getPreviousNonSharedLineCommentNode = require("./getPreviousNonSharedLineCommentNode");
-const hasBlock = require("./hasBlock");
+const getPreviousNonSharedLineCommentNode = require('./getPreviousNonSharedLineCommentNode');
+const hasBlock = require('./hasBlock');
 
-module.exports = function(atRule /*: postcss$atRule*/) /*: boolean*/ {
-  if (atRule.type !== "atrule") {
-    return false;
-  }
+/**
+ * @param {import('postcss').AtRule} atRule
+ * @returns {boolean}
+ */
+module.exports = function (atRule) {
+	if (atRule.type !== 'atrule') {
+		return false;
+	}
 
-  const previousNode = getPreviousNonSharedLineCommentNode(atRule);
+	const previousNode = getPreviousNonSharedLineCommentNode(atRule);
 
-  if (previousNode === undefined) {
-    return false;
-  }
+	if (previousNode === undefined) {
+		return false;
+	}
 
-  return (
-    previousNode.type === "atrule" &&
-    !hasBlock(previousNode) &&
-    !hasBlock(atRule)
-  );
+	return previousNode.type === 'atrule' && !hasBlock(previousNode) && !hasBlock(atRule);
 };

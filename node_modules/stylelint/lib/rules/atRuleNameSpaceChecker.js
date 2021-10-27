@@ -1,41 +1,43 @@
-"use strict";
+// @ts-nocheck
 
-const isStandardSyntaxAtRule = require("../utils/isStandardSyntaxAtRule");
-const report = require("../utils/report");
+'use strict';
 
-module.exports = function(options) {
-  options.root.walkAtRules(atRule => {
-    if (!isStandardSyntaxAtRule(atRule)) {
-      return;
-    }
+const isStandardSyntaxAtRule = require('../utils/isStandardSyntaxAtRule');
+const report = require('../utils/report');
 
-    checkColon(
-      `@${atRule.name}${atRule.raws.afterName || ""}${atRule.params}`,
-      atRule.name.length,
-      atRule
-    );
-  });
+module.exports = function (options) {
+	options.root.walkAtRules((atRule) => {
+		if (!isStandardSyntaxAtRule(atRule)) {
+			return;
+		}
 
-  function checkColon(source, index, node) {
-    options.locationChecker({
-      source,
-      index,
-      err: m => {
-        if (options.fix) {
-          options.fix(node);
+		checkColon(
+			`@${atRule.name}${atRule.raws.afterName || ''}${atRule.params}`,
+			atRule.name.length,
+			atRule,
+		);
+	});
 
-          return;
-        }
+	function checkColon(source, index, node) {
+		options.locationChecker({
+			source,
+			index,
+			err: (m) => {
+				if (options.fix) {
+					options.fix(node);
 
-        report({
-          message: m,
-          node,
-          index,
-          result: options.result,
-          ruleName: options.checkedRuleName
-        });
-      },
-      errTarget: `@${node.name}`
-    });
-  }
+					return;
+				}
+
+				report({
+					message: m,
+					node,
+					index,
+					result: options.result,
+					ruleName: options.checkedRuleName,
+				});
+			},
+			errTarget: `@${node.name}`,
+		});
+	}
 };

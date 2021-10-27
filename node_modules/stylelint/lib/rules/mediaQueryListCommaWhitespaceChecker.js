@@ -1,60 +1,54 @@
-"use strict";
+// @ts-nocheck
 
-const atRuleParamIndex = require("../utils/atRuleParamIndex");
-const report = require("../utils/report");
-const styleSearch = require("style-search");
+'use strict';
 
-module.exports = function(opts) {
-  opts.root.walkAtRules(/^media$/i, atRule => {
-    const params = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
+const atRuleParamIndex = require('../utils/atRuleParamIndex');
+const report = require('../utils/report');
+const styleSearch = require('style-search');
 
-    styleSearch({ source: params, target: "," }, match => {
-      let index = match.startIndex;
+module.exports = function (opts) {
+	opts.root.walkAtRules(/^media$/i, (atRule) => {
+		const params = atRule.raws.params ? atRule.raws.params.raw : atRule.params;
 
-      if (opts.allowTrailingComments) {
-        // if there is a comment on the same line at after the comma, check the space after the comment.
-        let execResult;
+		styleSearch({ source: params, target: ',' }, (match) => {
+			let index = match.startIndex;
 
-        while (
-          (execResult = /^[^\S\r\n]*\/\*([\s\S]*?)\*\//.exec(
-            params.slice(index + 1)
-          ))
-        ) {
-          index += execResult[0].length;
-        }
+			if (opts.allowTrailingComments) {
+				// if there is a comment on the same line at after the comma, check the space after the comment.
+				let execResult;
 
-        if (
-          (execResult = /^([^\S\r\n]*\/\/([\s\S]*?))\r?\n/.exec(
-            params.slice(index + 1)
-          ))
-        ) {
-          index += execResult[1].length;
-        }
-      }
+				while ((execResult = /^[^\S\r\n]*\/\*([\s\S]*?)\*\//.exec(params.slice(index + 1)))) {
+					index += execResult[0].length;
+				}
 
-      checkComma(params, index, atRule);
-    });
-  });
+				if ((execResult = /^([^\S\r\n]*\/\/([\s\S]*?))\r?\n/.exec(params.slice(index + 1)))) {
+					index += execResult[1].length;
+				}
+			}
 
-  function checkComma(source, index, node) {
-    opts.locationChecker({
-      source,
-      index,
-      err: m => {
-        const commaIndex = index + atRuleParamIndex(node);
+			checkComma(params, index, atRule);
+		});
+	});
 
-        if (opts.fix && opts.fix(node, commaIndex)) {
-          return;
-        }
+	function checkComma(source, index, node) {
+		opts.locationChecker({
+			source,
+			index,
+			err: (m) => {
+				const commaIndex = index + atRuleParamIndex(node);
 
-        report({
-          message: m,
-          node,
-          index: commaIndex,
-          result: opts.result,
-          ruleName: opts.checkedRuleName
-        });
-      }
-    });
-  }
+				if (opts.fix && opts.fix(node, commaIndex)) {
+					return;
+				}
+
+				report({
+					message: m,
+					node,
+					index: commaIndex,
+					result: opts.result,
+					ruleName: opts.checkedRuleName,
+				});
+			},
+		});
+	}
 };

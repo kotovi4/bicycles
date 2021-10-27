@@ -1,16 +1,19 @@
-/* @flow */
-"use strict";
+'use strict';
 
-const _ = require("lodash");
-const getPreviousNonSharedLineCommentNode = require("./getPreviousNonSharedLineCommentNode");
-const isBlocklessAtRuleAfterBlocklessAtRule = require("./isBlocklessAtRuleAfterBlocklessAtRule");
+const _ = require('lodash');
+const getPreviousNonSharedLineCommentNode = require('./getPreviousNonSharedLineCommentNode');
+const isBlocklessAtRuleAfterBlocklessAtRule = require('./isBlocklessAtRuleAfterBlocklessAtRule');
 
-module.exports = function(atRule /*: postcss$atRule*/) /*: boolean*/ {
-  if (!isBlocklessAtRuleAfterBlocklessAtRule(atRule)) {
-    return false;
-  }
+/**
+ * @param {import('postcss').AtRule} atRule
+ * @returns {boolean}
+ */
+module.exports = function (atRule) {
+	if (!isBlocklessAtRuleAfterBlocklessAtRule(atRule)) {
+		return false;
+	}
 
-  const previousNode = getPreviousNonSharedLineCommentNode(atRule);
+	const previousNode = getPreviousNonSharedLineCommentNode(atRule);
 
-  return _.get(previousNode, "name") === atRule.name;
+	return _.get(previousNode, 'name') === atRule.name;
 };

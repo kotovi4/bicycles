@@ -21,7 +21,7 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 30px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.05em;
   color: $black--darker;
 
   @media (max-width: $tablet-width) {
@@ -179,6 +179,7 @@
   @media (max-width: 1170px) {
     height: 503px;
   }
+
   @media (max-width: $tablet-width) {
     width: 270px;
     height: 300px;

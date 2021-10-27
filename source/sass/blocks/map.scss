@@ -5,11 +5,11 @@
   margin: 0 auto;
   text-align: center;
 
-  @media (max-width: $tablet-width)  {
+  @media (max-width: $tablet-width) {
     padding: 0 35px;
   }
 
-  @media (max-width: $mobile-width)  {
+  @media (max-width: $mobile-width) {
     padding: 0;
     margin: 0;
   }
@@ -20,7 +20,7 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 30px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.05em;
   color: $black--darker;
 
   @media (max-width: $tablet-width) {
@@ -55,7 +55,7 @@
   display: block;
   width: 957px;
   height: 530px;
-  background-image: url(../img/map-img-desktop@1x.png);
+  background-image: url("../img/map-img-desktop@1x.png");
   background-size: cover;
 
   @media (min-resolution: 1.5dppx) {
@@ -65,7 +65,7 @@
   @media (max-width: $tablet-width) {
     width: 698px;
     height: 545px;
-    background-image: url(../img/map-img-tablet@1x.png);
+    background-image: url("../img/map-img-tablet@1x.png");
 
     @media (min-resolution: 1.5dppx) {
       background-image: url("../img/map-img-tablet@2x.png");
@@ -75,7 +75,7 @@
   @media (max-width: $mobile-width) {
     width: 100%;
     height: 250px;
-    background-image: url(../img/map-img-mobile@1x.png);
+    background-image: url("../img/map-img-mobile@1x.png");
 
     @media (min-resolution: 1.5dppx) {
       background-image: url("../img/map-img-mobile@2x.png");

@@ -1,22 +1,30 @@
-/* @flow */
-"use strict";
+'use strict';
 
-const _ = require("lodash");
+const _ = require('lodash');
 
-// Add an empty line after a node. Mutates the node.
-function addEmptyLineAfter(
-  node /*: postcss$node*/,
-  newline /*: '\n' | '\r\n'*/
-) /*: postcss$node*/ {
-  const after = _.last(node.raws.after.split(";"));
+/** @typedef {import('postcss').ChildNode} ChildNode */
 
-  if (!/\r?\n/.test(after)) {
-    node.raws.after = node.raws.after + _.repeat(newline, 2);
-  } else {
-    node.raws.after = node.raws.after.replace(/(\r?\n)/, `${newline}$1`);
-  }
+/**
+ * Add an empty line after a node. Mutates the node.
+ *
+ * @param {ChildNode} node
+ * @param {'\n' | '\r\n'} newline
+ * @returns {ChildNode}
+ */
+function addEmptyLineAfter(node, newline) {
+	if (node.raws.after === undefined) {
+		return node;
+	}
 
-  return node;
+	const after = _.last(node.raws.after.split(';')) || '';
+
+	if (!/\r?\n/.test(after)) {
+		node.raws.after += newline.repeat(2);
+	} else {
+		node.raws.after = node.raws.after.replace(/(\r?\n)/, `${newline}$1`);
+	}
+
+	return node;
 }
 
 module.exports = addEmptyLineAfter;

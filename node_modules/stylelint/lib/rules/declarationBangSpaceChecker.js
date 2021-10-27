@@ -1,41 +1,43 @@
-"use strict";
+// @ts-nocheck
 
-const declarationValueIndex = require("../utils/declarationValueIndex");
-const report = require("../utils/report");
-const styleSearch = require("style-search");
+'use strict';
 
-module.exports = function(opts) {
-  opts.root.walkDecls(function(decl) {
-    const indexOffset = declarationValueIndex(decl);
-    const declString = decl.toString();
-    const valueString = decl.toString().slice(indexOffset);
+const declarationValueIndex = require('../utils/declarationValueIndex');
+const report = require('../utils/report');
+const styleSearch = require('style-search');
 
-    if (valueString.indexOf("!") === -1) {
-      return;
-    }
+module.exports = function (opts) {
+	opts.root.walkDecls((decl) => {
+		const indexOffset = declarationValueIndex(decl);
+		const declString = decl.toString();
+		const valueString = decl.toString().slice(indexOffset);
 
-    styleSearch({ source: valueString, target: "!" }, match => {
-      check(declString, match.startIndex + indexOffset, decl);
-    });
-  });
+		if (!valueString.includes('!')) {
+			return;
+		}
 
-  function check(source, index, node) {
-    opts.locationChecker({
-      source,
-      index,
-      err: m => {
-        if (opts.fix && opts.fix(node, index)) {
-          return;
-        }
+		styleSearch({ source: valueString, target: '!' }, (match) => {
+			check(declString, match.startIndex + indexOffset, decl);
+		});
+	});
 
-        report({
-          message: m,
-          node,
-          index,
-          result: opts.result,
-          ruleName: opts.checkedRuleName
-        });
-      }
-    });
-  }
+	function check(source, index, node) {
+		opts.locationChecker({
+			source,
+			index,
+			err: (m) => {
+				if (opts.fix && opts.fix(node, index)) {
+					return;
+				}
+
+				report({
+					message: m,
+					node,
+					index,
+					result: opts.result,
+					ruleName: opts.checkedRuleName,
+				});
+			},
+		});
+	}
 };

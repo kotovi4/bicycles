@@ -1,30 +1,34 @@
-"use strict";
+// @ts-nocheck
 
-module.exports = function(params) {
-  const { div, index, nodes, expectation, position, symb } = params;
+'use strict';
 
-  if (expectation.indexOf("always") === 0) {
-    div[position] = symb;
+module.exports = function (params) {
+	const { div, index, nodes, expectation, position, symb } = params;
 
-    return true;
-  } else if (expectation.indexOf("never") === 0) {
-    div[position] = "";
+	if (expectation.startsWith('always')) {
+		div[position] = symb;
 
-    for (let i = index + 1; i < nodes.length; i++) {
-      const node = nodes[i];
+		return true;
+	}
 
-      if (node.type === "comment") {
-        continue;
-      }
+	if (expectation.startsWith('never')) {
+		div[position] = '';
 
-      if (node.type === "space") {
-        node.value = "";
-        continue;
-      }
+		for (let i = index + 1; i < nodes.length; i++) {
+			const node = nodes[i];
 
-      break;
-    }
+			if (node.type === 'comment') {
+				continue;
+			}
 
-    return true;
-  }
+			if (node.type === 'space') {
+				node.value = '';
+				continue;
+			}
+
+			break;
+		}
+
+		return true;
+	}
 };

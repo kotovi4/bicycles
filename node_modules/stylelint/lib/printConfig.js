@@ -1,55 +1,58 @@
-/* @flow */
-"use strict";
+'use strict';
 
-const _ = require("lodash");
-const createStylelint = require("./createStylelint");
-const globby /*: Function*/ = require("globby");
-const path = require("path");
+const _ = require('lodash');
+const createStylelint = require('./createStylelint');
+const globby = require('globby');
+const path = require('path');
 
-module.exports = function(
-  options /*: stylelint$standaloneOptions */
-) /*: Promise<stylelint$config>*/ {
-  const code = options.code;
-  const config = options.config;
-  const configBasedir = options.configBasedir;
-  const configFile = options.configFile;
-  const configOverrides = options.configOverrides;
-  const globbyOptions = options.globbyOptions;
-  const files = options.files;
+/** @typedef {import('stylelint').StylelintConfig} StylelintConfig */
 
-  const isCodeNotFile = code !== undefined;
+/**
+ * @param {import('stylelint').StylelintStandaloneOptions} options
+ * @returns {Promise<StylelintConfig | null>}
+ */
+module.exports = function (options) {
+	const code = options.code;
+	const config = options.config;
+	const configBasedir = options.configBasedir;
+	const configFile = options.configFile;
+	const configOverrides = options.configOverrides;
+	const globbyOptions = options.globbyOptions;
+	const files = options.files;
 
-  if (!files || files.length !== 1 || isCodeNotFile) {
-    return Promise.reject(
-      new Error(
-        "The --print-config option must be used with exactly one file path."
-      )
-    );
-  }
+	const isCodeNotFile = code !== undefined;
 
-  const filePath = files[0];
+	if (!files || files.length !== 1 || isCodeNotFile) {
+		return Promise.reject(
+			new Error('The --print-config option must be used with exactly one file path.'),
+		);
+	}
 
-  if (globby.hasMagic(filePath)) {
-    return Promise.reject(
-      new Error("The --print-config option does not support globs.")
-    );
-  }
+	const filePath = files[0];
 
-  const stylelint = createStylelint({
-    config,
-    configFile,
-    configBasedir,
-    configOverrides
-  });
+	if (globby.hasMagic(filePath)) {
+		return Promise.reject(new Error('The --print-config option does not support globs.'));
+	}
 
-  const cwd = _.get(globbyOptions, "cwd", process.cwd());
-  const absoluteFilePath = !path.isAbsolute(filePath)
-    ? path.join(cwd, filePath)
-    : path.normalize(filePath);
+	const stylelint = createStylelint({
+		config,
+		configFile,
+		configBasedir,
+		configOverrides,
+	});
 
-  const configSearchPath = stylelint._options.configFile || absoluteFilePath;
+	const cwd = _.get(globbyOptions, 'cwd', process.cwd());
+	const absoluteFilePath = !path.isAbsolute(filePath)
+		? path.join(cwd, filePath)
+		: path.normalize(filePath);
 
-  return stylelint
-    .getConfigForFile(configSearchPath)
-    .then(result => result.config);
+	const configSearchPath = stylelint._options.configFile || absoluteFilePath;
+
+	return stylelint.getConfigForFile(configSearchPath).then((result) => {
+		if (result === null) {
+			return result;
+		}
+
+		return result.config;
+	});
 };
