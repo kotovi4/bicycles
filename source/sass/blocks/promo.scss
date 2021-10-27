@@ -13,7 +13,7 @@
     background-color: $black;
     z-index: -1;
 
-    @media (min-resolution: 1.5dppx) {
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
       background-image: url("../img/promo-bg-desktop@2x.jpg");
       background-size: cover;
     }
@@ -25,7 +25,7 @@
       background-image: url("../img/promo-bg-tablet@1x.jpg");
       background-position: center;
 
-      @media (min-resolution: 1.5dppx) {
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background-image: url("../img/promo-bg-tablet@2x.jpg");
       }
     }
@@ -36,7 +36,7 @@
       height: 390px;
       background-image: url("../img/promo-bg-mobile@1x.jpg");
 
-      @media (min-resolution: 1.5dppx) {
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background-image: url("../img/promo-bg-mobile@2x.jpg");
       }
     }
