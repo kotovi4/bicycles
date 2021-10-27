@@ -55,6 +55,7 @@
 
 .video img {
   margin-top: 55px;
+  object-fit: contain;
 
   @media (max-width: $tablet-width) {
     margin-top: 40px;

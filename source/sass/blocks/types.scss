@@ -176,6 +176,9 @@
 }
 
 .types__img {
+  object-fit: cover;
+  border-radius: 5%;
+
   @media (max-width: 1170px) {
     height: 503px;
   }

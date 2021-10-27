@@ -11,7 +11,7 @@ const formButton = form.querySelector('.form__button')
 const modal = document.querySelector('.modal');
 
 
-// pageHeader.classList.remove('page-header--nojs');
+pageHeader.classList.remove('page-header--nojs');
 
 headerToggle.addEventListener('click', function () {
   if (pageHeader.classList.contains('page-header--closed')) {
@@ -68,9 +68,3 @@ if (nameInput && telInput) {
     localStorage.setItem(telInput.name, telInput.value);
   });
 }
-
-// //Отправка и валидация формы
-// form.addEventListener('submit', (evt) => {
-//   evt.preventDefault();
-
-// });
