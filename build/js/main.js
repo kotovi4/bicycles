@@ -12,7 +12,7 @@ const modal = document.querySelector('.modal');
 const modalClose = modal.querySelector('.modal__close');
 
 
-pageHeader.classList.remove('page-header--nojs');
+// pageHeader.classList.remove('page-header--nojs');
 
 headerToggle.addEventListener('click', function () {
   if (pageHeader.classList.contains('page-header--closed')) {
