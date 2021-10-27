@@ -22,7 +22,7 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 30px;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.005em;
   color: $white;
 
   @media (max-width: $tablet-width) {
@@ -41,7 +41,7 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 28px;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.005em;
   color: transparentize($white, 0.3);
 
   @media (max-width: $tablet-width) {
