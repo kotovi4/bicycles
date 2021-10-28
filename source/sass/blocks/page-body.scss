@@ -1,0 +1,9 @@
+.page-body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  &--lock {
+    position: fixed;
+  }
+}
