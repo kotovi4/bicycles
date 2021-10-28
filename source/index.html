@@ -11,9 +11,9 @@
   <link rel="preload" href="./fonts/opensans-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.min.css">
 </head>
-<body>
+<body tabindex="-1">
 
-  <header class="page-header page-header--closed">
+  <header class="page-header page-header--nojs">
     <a class="page-header__logo" href="index.html">
       <svg class="page-header__img" width="68" height="22">
         <use xlink:href="img/sprite_auto.svg#icon-logo"></use>
@@ -25,16 +25,36 @@
     <nav class="page-header__nav main-nav">
       <ul class="main-nav__list">
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#about-us">О нас</a>
+          <a class="main-nav__link" href="#about-us" tabindex="1">
+            <span>О нас</span>
+            <svg class="main-nav__img" width="25" height="25">
+              <use xlink:href="img/sprite_auto.svg#icon-arrow"></use>
+            </svg>
+          </a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#types">Виды велосипедов</a>
+          <a class="main-nav__link" href="#types" tabindex="2">
+            <span>Виды велосипедов</span>
+            <svg class="main-nav__img" width="25" height="25">
+              <use xlink:href="img/sprite_auto.svg#icon-arrow"></use>
+            </svg>
+          </a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#video">Видео про велосипеды</a>
+          <a class="main-nav__link" href="#video" tabindex="3">
+            <span>Виды про велосипеды</span>
+            <svg class="main-nav__img" width="25" height="25">
+              <use xlink:href="img/sprite_auto.svg#icon-arrow"></use>
+            </svg>
+          </a>
         </li>
         <li class="main-nav__item">
-          <a class="main-nav__link" href="#contacts">Контакты</a>
+          <a class="main-nav__link" href="#contacts" tabindex="4">
+            <span>Контакты</span>
+            <svg class="main-nav__img" width="25" height="25">
+              <use xlink:href="img/sprite_auto.svg#icon-arrow"></use>
+            </svg>
+          </a>
         </li>
       </ul>
     </nav>
@@ -57,10 +77,10 @@
         <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" enctype="multipart/form-data" autocomplete="off">
           <h3>Заполните поля ниже и мы подберем велосипед Вашей мечты</h3>
           <label class="visually-hidden" for="name">Имя</label>
-          <input name="name" id="name" type="text" placeholder="Введите Ваше Имя" pattern="^[А-Яа-яЁё\s]+$" required>
+          <input name="name" id="name" type="text" tabindex="5" placeholder="Введите Ваше Имя" pattern="^[А-Яа-яЁё\s]+$" required>
           <label class="visually-hidden" for="tel">Телефон</label>
-          <input name="tel" id="tel" type="tel" maxlength="12" placeholder="Введите Ваш номер телефона" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required>
-          <button class="form__button" type="submit">Подобрать велосипед мечты</button>
+          <input name="tel" id="tel" type="tel" tabindex="6" maxlength="12" placeholder="Введите Ваш номер телефона" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required>
+          <button class="form__button" type="submit" tabindex="7">Подобрать велосипед мечты</button>
         </form>
       </div>
     </section>
@@ -149,7 +169,7 @@
         <!-- 1x: 929px; 2x: 1858px -->
         <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
       </picture>
-      <button aria-label="Кнопка воспроизведения видео">
+      <button aria-label="Кнопка воспроизведения видео" tabindex="8">
         <svg width="65" height="65">
           <use xlink:href="img/sprite_auto.svg#icon-play"></use>
         </svg>
@@ -161,18 +181,18 @@
       <h2>Как нас найти?</h2>
       <p>Мы находимся по адресу: Санкт-Петербург, ул. Большая Конюшенная, д. 19</p>
       <div class="map__container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6036253003151!2d30.320858716211177!3d59.938719169054096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca145cc1%3A0x42b32648d8238007!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LzgsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1624537349252!5m2!1sru!2sru" width="320" height="250" tabindex="9" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6036253003151!2d30.320858716211177!3d59.938719169054096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca145cc1%3A0x42b32648d8238007!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LzgsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1624537349252!5m2!1sru!2sru" width="320" height="250" tabindex="9" style="border: 0;" allowfullscreen="" loading="lazy" tabindex="9"></iframe>
       </div>
     </div>
 
     <div class="page-footer__contacts contacts">
-      <a class="contacts__item contacts__item--email" href="mailto:puteshestviemechta@gmail.ru">
+      <a class="contacts__item contacts__item--email" href="mailto:puteshestviemechta@gmail.ru" tabindex="10">
         <svg class="contacts__img" width="26" height="20">
           <use xlink:href="img/sprite_auto.svg#icon-email"></use>
         </svg>
         <p class="contacts__text">puteshestviemechta@gmail.ru</p>
       </a>
-      <a class="contacts__item contacts__item--tel" href="tel:+749978468446">
+      <a class="contacts__item contacts__item--tel" href="tel:+749978468446" tabindex="11">
         <svg class="contacts__img" width="22" height="23">
           <use xlink:href="img/sprite_auto.svg#icon-phone"></use>
         </svg>

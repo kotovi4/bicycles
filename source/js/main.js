@@ -10,8 +10,8 @@ const telInput = document.querySelector('#tel');
 const formButton = form.querySelector('.form__button')
 const modal = document.querySelector('.modal');
 
-
 pageHeader.classList.remove('page-header--nojs');
+pageHeader.classList.add('page-header--closed');
 
 headerToggle.addEventListener('click', function () {
   if (pageHeader.classList.contains('page-header--closed')) {

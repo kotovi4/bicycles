@@ -20,6 +20,8 @@
   }
 
   @media (max-width: $tablet-width) {
+    position: relative;
+
     &::before {
       height: 340px;
       background-image: url("../img/promo-bg-tablet@1x.jpg");

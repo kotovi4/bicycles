@@ -5,6 +5,7 @@
   z-index: 5;
 
   @media (max-width: $tablet-width) {
+    width: 100%;
     margin: 0;
     font-weight: 400;
     font-size: 20px;
@@ -51,6 +52,9 @@
   color: transparentize($white, 0.3);
 
   @media (max-width: $tablet-width) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: $gray--dark;
   }
 

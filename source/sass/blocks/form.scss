@@ -45,6 +45,11 @@
   border: 1px solid $gray--darker;
   border-radius: 4px;
 
+  &:hover,
+  &:focus {
+    border-color: $accent;
+  }
+
   @media (max-width: $mobile-width) {
     padding: 13px 26px 8px;
   }

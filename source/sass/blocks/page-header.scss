@@ -49,8 +49,18 @@
     background-repeat: no-repeat;
     background-position: center;
     border: 0;
+    cursor: pointer;
   }
 }
+
+// .page-header--nojs .main-nav__list {
+//   @media (max-width: $tablet-width) {
+//     position: absolute;
+//     padding-top: 50px;
+//     height: auto;
+//     min-height: 560px;
+//   }
+// }
 
 .page-header__toggle-line {
   position: relative;
@@ -82,6 +92,14 @@
   background-color: $black;
   transform-origin: 50% 50%;
   transition: 0.3s, transform 0.3s;
+}
+
+.page-header--nojs .page-header__toggle {
+  display: none;
+}
+
+.page-header--nojs .main-nav__list {
+  position: relative;
 }
 
 .page-header--opened .page-header__toggle {

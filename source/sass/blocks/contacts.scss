@@ -25,6 +25,11 @@
   fill: none;
   color: transparentize($black, 0.5);
 
+  &:hover,
+  &:focus {
+    color: $accent;
+  }
+
   @media (max-width: $mobile-width) {
     &--email {
       margin-left: 20px;
