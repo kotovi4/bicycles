@@ -49,7 +49,7 @@ for (const smoothLink of smoothLinks) {
 if (nameInput && telInput) {
   nameInput.addEventListener('input', function () {
     if (nameInput.validity.patternMismatch) {
-      nameInput.setCustomValidity('Введите имя русскими буквами');
+      nameInput.setCustomValidity('Вводите только буквы');
     } else {
       nameInput.setCustomValidity('');
     }
