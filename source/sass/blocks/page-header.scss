@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding: 20px 0 10px;
+  padding: 18px 0 9px;
   width: 880px;
   border-bottom: 1px solid transparentize($white, 0.3);
   z-index: 5;
@@ -52,15 +52,6 @@
     cursor: pointer;
   }
 }
-
-// .page-header--nojs .main-nav__list {
-//   @media (max-width: $tablet-width) {
-//     position: absolute;
-//     padding-top: 50px;
-//     height: auto;
-//     min-height: 560px;
-//   }
-// }
 
 .page-header__toggle-line {
   position: relative;

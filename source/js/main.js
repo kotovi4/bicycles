@@ -22,7 +22,7 @@ headerToggle.addEventListener('click', function () {
   } else {
     pageHeader.classList.add('page-header--closed');
     pageHeader.classList.remove('page-header--opened');
-    body.classList.emove('page-body--lock');
+    body.classList.remove('page-body--lock');
   }
 });
 
