@@ -16,7 +16,6 @@
 .main-nav__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin: 0;
   padding: 0 20px;
   width: 903px;
@@ -40,6 +39,12 @@
 }
 
 .main-nav__item {
+  margin-right: 134px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
   @media (max-width: $tablet-width) {
     padding: 16px 17px;
     margin-bottom: 30px;
@@ -60,5 +65,13 @@
 
   &:hover {
     color: $accent;
+  }
+}
+
+.main-nav__img {
+  display: none;
+
+  @media (max-width: $tablet-width) {
+    display: block;
   }
 }
