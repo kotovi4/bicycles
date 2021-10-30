@@ -5,18 +5,17 @@
   justify-content: space-between;
   width: 565px;
   margin: 0 auto;
-  padding-top: 26px;
+  padding-top: 41px;
 
   @media (max-width: $tablet-width) {
-    padding-top: 7px;
+    padding-top: 21px;
   }
 
   @media (max-width: $mobile-width) {
     flex-direction: column;
     align-items: center;
     width: 288px;
-    padding: 0;
-    margin-top: 15px;
+    padding-top: 31px;
   }
 }
 
@@ -33,7 +32,12 @@
 
   @media (max-width: $mobile-width) {
     &--email {
-      margin-left: 20px;
+      margin-left: 14px;
+    }
+
+    &--tel {
+      margin-top: 25px;
+      margin-left: -6px;
     }
   }
 }
@@ -43,7 +47,7 @@
   margin-right: 17px;
 
   @media (max-width: $tablet-width) {
-    margin-left: 17px;
+    margin-left: 15px;
     margin-right: 15px;
   }
 }
