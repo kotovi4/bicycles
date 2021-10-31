@@ -1,16 +1,15 @@
 .page-footer {
   display: flex;
   flex-direction: column;
-  padding-top: 124px;
+  padding-top: 49px;
   padding-bottom: 84px;
 
   @media (max-width: $tablet-width) {
-    padding-top: 35px;
+    padding-top: 16px;
     padding-bottom: 22px;
   }
 
   @media (max-width: $mobile-width) {
-    padding-top: 4px;
     padding-bottom: 35px;
   }
 }
