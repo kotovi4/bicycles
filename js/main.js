@@ -1,6 +1,7 @@
 'use strict';
 
 //Меню tablet и mobile
+const body = document.querySelector('.page-body');
 const pageHeader = document.querySelector('.page-header');
 const headerToggle = document.querySelector('.page-header__toggle');
 const mainNavList = document.querySelector('.main-nav-list');
@@ -17,9 +18,11 @@ headerToggle.addEventListener('click', function () {
   if (pageHeader.classList.contains('page-header--closed')) {
     pageHeader.classList.remove('page-header--closed');
     pageHeader.classList.add('page-header--opened');
+    body.classList.add('page-body--lock');
   } else {
     pageHeader.classList.add('page-header--closed');
     pageHeader.classList.remove('page-header--opened');
+    body.classList.remove('page-body--lock');
   }
 });
 
@@ -49,7 +52,7 @@ for (const smoothLink of smoothLinks) {
 if (nameInput && telInput) {
   nameInput.addEventListener('input', function () {
     if (nameInput.validity.patternMismatch) {
-      nameInput.setCustomValidity('Введите имя русскими буквами');
+      nameInput.setCustomValidity('Вводите только буквы');
     } else {
       nameInput.setCustomValidity('');
     }

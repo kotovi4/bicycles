@@ -11,10 +11,10 @@
   <link rel="preload" href="./fonts/opensans-bold.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="stylesheet" href="css/style.min.css">
 </head>
-<body tabindex="-1">
+<body class="page-body" tabindex="-1">
 
   <header class="page-header page-header--nojs">
-    <a class="page-header__logo" href="index.html">
+    <a class="page-header__logo">
       <svg class="page-header__img" width="68" height="22">
         <use xlink:href="img/sprite_auto.svg#icon-logo"></use>
       </svg>
@@ -42,7 +42,7 @@
         </li>
         <li class="main-nav__item">
           <a class="main-nav__link" href="#video" tabindex="3">
-            <span>Виды про велосипеды</span>
+            <span>Видео про велосипеды</span>
             <svg class="main-nav__img" width="25" height="25">
               <use xlink:href="img/sprite_auto.svg#icon-arrow"></use>
             </svg>
@@ -77,7 +77,7 @@
         <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" enctype="multipart/form-data" autocomplete="off">
           <h3>Заполните поля ниже и мы подберем велосипед Вашей мечты</h3>
           <label class="visually-hidden" for="name">Имя</label>
-          <input name="name" id="name" type="text" tabindex="5" placeholder="Введите Ваше Имя" pattern="^[А-Яа-яЁё\s]+$" required="">
+          <input name="name" id="name" type="text" tabindex="5" placeholder="Введите Ваше Имя" pattern="^[A-Za-zА-Яа-яЁё\s]+$" required="">
           <label class="visually-hidden" for="tel">Телефон</label>
           <input name="tel" id="tel" type="tel" tabindex="6" maxlength="12" placeholder="Введите Ваш номер телефона" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required="">
           <button class="form__button" type="submit" tabindex="7">Подобрать велосипед мечты</button>
@@ -113,11 +113,11 @@
         <li class="types__item types__item--road">
           <picture>
             <!-- 1x: 270px; 2x: 540px -->
-            <source type="image/webp" media="(max-width: 1023px)" srcset="img/road-bike-tablet@1x.webp, img/road-bike-tablet@2x.webp 2x">
+            <source type="image/webp" media="(max-width: 1230px)" srcset="img/road-bike-tablet@1x.webp, img/road-bike-tablet@2x.webp 2x">
             <!-- 1x: 342px; 2x: 684px -->
             <source type="image/webp" srcset="img/road-bike-desktop@1x.webp, img/road-bike-desktop@2x.webp 2x">
             <!-- 1x: 270px; 2x: 540px -->
-            <source media="(max-width: 1023px)" srcset="img/road-bike-tablet@1x.jpg, img/road-bike-tablet@2x.jpg 2x">
+            <source media="(max-width: 1230px)" srcset="img/road-bike-tablet@1x.jpg, img/road-bike-tablet@2x.jpg 2x">
             <!-- 1x: 342px; 2x: 684px -->
             <img class="types__img" src="img/road-bike-desktop@1x.jpg" srcset="img/road-bike-desktop@2x.jpg 2x" width="342" height="503" alt="Дорожный велосипед">
           </picture>
@@ -126,11 +126,11 @@
         <li class="types__item types__item--mountain">
           <picture>
             <!-- 1x: 270px; 2x: 540px -->
-            <source type="image/webp" media="(max-width: 1023px)" srcset="img/mountain-bike-tablet@1x.webp, img/mountain-bike-tablet@2x.webp 2x">
+            <source type="image/webp" media="(max-width: 1230px)" srcset="img/mountain-bike-tablet@1x.webp, img/mountain-bike-tablet@2x.webp 2x">
             <!-- 1x: 342px; 2x: 684px -->
             <source type="image/webp" srcset="img/mountain-bike-desktop@1x.webp, img/mountain-bike-desktop@2x.webp 2x">
             <!-- 1x: 270px; 2x: 540px -->
-            <source media="(max-width: 1023px)" srcset="img/mountain-bike-tablet@1x.jpg, img/mountain-bike-tablet@2x.jpg 2x">
+            <source media="(max-width: 1230px)" srcset="img/mountain-bike-tablet@1x.jpg, img/mountain-bike-tablet@2x.jpg 2x">
             <!-- 1x: 342px; 2x: 684px -->
             <img class="types__img" src="img/mountain-bike-desktop@1x.jpg" srcset="img/mountain-bike-desktop@2x.jpg 2x" width="342" height="566" alt="Горный велосипед">
           </picture>
@@ -139,11 +139,11 @@
         <li class="types__item types__item--child">
           <picture>
             <!-- 1x: 270px; 2x: 540px -->
-            <source type="image/webp" media="(max-width: 1023px)" srcset="img/child-bike-tablet@1x.webp, img/child-bike-tablet@2x.webp 2x">
+            <source type="image/webp" media="(max-width: 1230px)" srcset="img/child-bike-tablet@1x.webp, img/child-bike-tablet@2x.webp 2x">
             <!-- 1x: 342px; 2x: 684px -->
             <source type="image/webp" srcset="img/child-bike-desktop@1x.webp, img/child-bike-desktop@2x.webp 2x">
             <!-- 1x: 270px; 2x: 540px -->
-            <source media="(max-width: 1023px)" srcset="img/child-bike-tablet@1x.jpg, img/child-bike-tablet@2x.jpg 2x">
+            <source media="(max-width: 1230px)" srcset="img/child-bike-tablet@1x.jpg, img/child-bike-tablet@2x.jpg 2x">
             <!-- 1x: 342px; 2x: 684px -->
             <img class="types__img" src="img/child-bike-desktop@1x.jpg" srcset="img/child-bike-desktop@2x.jpg 2x" width="342" height="513" alt="Горный велосипед">
           </picture>
@@ -153,27 +153,31 @@
     </section>
 
     <section class="video" id="video">
-      <h2>Видео про велосипеды</h2>
-      <p>В этом видео мы подробно расскажем про особенности выбора велосипеда для себя.</p>
-      <picture>
-        <!-- 1x: 288px; 2x: 576px -->
-        <source type="image/webp" media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.webp, img/video-bike-img-mobile@2x.webp 2x">
-        <!-- 1x: 503px; 2x: 1006px -->
-        <source type="image/webp" media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.webp, img/video-bike-img-tablet@2x.webp 2x">
-        <!-- 1x: 929x; 2x: 1858px -->
-        <source type="image/webp" srcset="img/video-bike-img-desktop@1x.webp, img/video-bike-img-desktop@2x.webp 2x">
-        <!-- 1x: 288px; 2x: 576px -->
-        <source media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.jpg, img/video-bike-img-mobile@2x.jpg 2x">
-        <!-- 1x: 503px; 2x: 1006px -->
-        <source media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.jpg, img/video-bike-img-tablet@2x.jpg 2x">
-        <!-- 1x: 929px; 2x: 1858px -->
-        <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
-      </picture>
-      <button aria-label="Кнопка воспроизведения видео" tabindex="8">
-        <svg width="65" height="65">
-          <use xlink:href="img/sprite_auto.svg#icon-play"></use>
-        </svg>
-      </button>
+      <div class="video__container">
+        <h2>Видео про велосипеды</h2>
+        <p>В этом видео мы подробно расскажем про особенности выбора велосипеда для себя.</p>
+        <div class="video__wrapper">
+          <picture>
+            <!-- 1x: 288px; 2x: 576px -->
+            <source type="image/webp" media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.webp, img/video-bike-img-mobile@2x.webp 2x">
+            <!-- 1x: 503px; 2x: 1006px -->
+            <source type="image/webp" media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.webp, img/video-bike-img-tablet@2x.webp 2x">
+            <!-- 1x: 929x; 2x: 1858px -->
+            <source type="image/webp" srcset="img/video-bike-img-desktop@1x.webp, img/video-bike-img-desktop@2x.webp 2x">
+            <!-- 1x: 288px; 2x: 576px -->
+            <source media="(max-width: 767px)" srcset="img/video-bike-img-mobile@1x.jpg, img/video-bike-img-mobile@2x.jpg 2x">
+            <!-- 1x: 503px; 2x: 1006px -->
+            <source media="(max-width: 1023px)" srcset="img/video-bike-img-tablet@1x.jpg, img/video-bike-img-tablet@2x.jpg 2x">
+            <!-- 1x: 929px; 2x: 1858px -->
+            <img src="img/video-bike-img-desktop@1x.jpg" srcset="img/video-bike-img-desktop@2x.jpg 2x" width="929" height="522" alt="Видео про велосипеды">
+          </picture>
+          <button aria-label="Кнопка воспроизведения видео" tabindex="8">
+            <svg width="65" height="65">
+              <use xlink:href="img/sprite_auto.svg#icon-play"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
     </section>
   </main>
   <footer class="page-footer" id="contacts">
@@ -190,13 +194,13 @@
         <svg class="contacts__img" width="26" height="20">
           <use xlink:href="img/sprite_auto.svg#icon-email"></use>
         </svg>
-        <p class="contacts__text">puteshestviemechta@gmail.ru</p>
+        <span class="contacts__text">puteshestviemechta@gmail.ru</span>
       </a>
       <a class="contacts__item contacts__item--tel" href="tel:+749978468446" tabindex="11">
         <svg class="contacts__img" width="22" height="23">
           <use xlink:href="img/sprite_auto.svg#icon-phone"></use>
         </svg>
-        <p class="contacts__text">+7 (499) -784-684-46</p>
+        <span class="contacts__text">+7 (499) -784-684-46</span>
       </a>
     </div>
   </footer>
