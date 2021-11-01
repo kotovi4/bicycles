@@ -24,6 +24,7 @@
   align-items: center;
   fill: none;
   color: transparentize($black, 0.5);
+  margin-bottom: 10px;
 
   &:hover,
   &:focus {
@@ -31,6 +32,8 @@
   }
 
   @media (max-width: $mobile-width) {
+    margin-bottom: 0;
+
     &--email {
       margin-left: 14px;
     }
