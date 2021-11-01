@@ -5,7 +5,7 @@
   "homepage": "https://kotovi4.github.io/bicycles",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.x",
-    "autoprefixer": "9.5.x",
+    "autoprefixer": "^10.4.0",
     "browser-sync": "2.26.x",
     "eslint": "4.16.0",
     "eslint-config-htmlacademy": "0.4.x",
