@@ -36,6 +36,8 @@ for (const smoothLink of smoothLinks) {
 
       const placeScroll = document.querySelector(id);
 
+      body.classList.remove('page-body--lock');
+
       if (placeScroll) {
         placeScroll.scrollIntoView({
           behavior: 'smooth',
