@@ -1,7 +1,7 @@
 .map {
-  display: flex;
+  // display: flex;
   max-width: 957px;
-  flex-direction: column;
+  // flex-direction: column;
   margin: 0 auto;
   text-align: center;
 
@@ -55,6 +55,7 @@
   display: block;
   width: 957px;
   height: 530px;
+  margin: 0 auto;
   background-image: url("../img/map-img-desktop@1x.png");
   background-color: $gray--darker;
   background-size: cover;
