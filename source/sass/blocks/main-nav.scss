@@ -14,15 +14,16 @@
 }
 
 .main-nav__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  column-gap: 135px;
   margin: 0;
   padding: 0 20px;
-  // width: 903px;
   list-style: none;
 
   @media (max-width: $tablet-width) {
     position: fixed;
+    direction: flex;
     top: 0;
     left: 0;
     justify-content: flex-start;
@@ -39,12 +40,6 @@
 }
 
 .main-nav__item {
-  margin-right: 134px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
   @media (max-width: $tablet-width) {
     padding: 16px 17px;
     margin-right: 0;
