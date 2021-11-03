@@ -33,7 +33,6 @@ for (const smoothLink of smoothLinks) {
     smoothLink.addEventListener('click', (evt) => {
       evt.preventDefault();
       const id = smoothLink.getAttribute('href');
-
       const placeScroll = document.querySelector(id);
 
       body.classList.remove('page-body--lock');
