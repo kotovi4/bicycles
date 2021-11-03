@@ -3,9 +3,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 18px 0 11px;
-  width: 880px;
   flex: 0 0 auto;
-  border-bottom: 1px solid transparentize($white, 0.3);
   z-index: 5;
 
   @media (max-width: $tablet-width) {
