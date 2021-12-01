@@ -1,13 +1,12 @@
 'use strict';
-
 //Меню tablet и mobile
 const body = document.querySelector('.page-body');
 const pageHeader = document.querySelector('.page-header');
 const headerToggle = document.querySelector('.page-header__toggle');
 const mainNavList = document.querySelector('.main-nav-list');
 const form = document.querySelector('.form');
-const nameInput = document.querySelector('#name');
-const telInput = document.querySelector('#tel');
+const nameInput = document.getElementById('name');
+const telInput = document.getElementById('tel');
 const formButton = form.querySelector('.form__button')
 const modal = document.querySelector('.modal');
 
@@ -47,7 +46,34 @@ for (const smoothLink of smoothLinks) {
       }
     });
   }
-}
+};
+
+//Валидация поля телефона
+var addValuePhoneField = function (element) {
+  //ставит +7 при фокусе на поле
+  if (element) {
+    element.addEventListener('focus', function () {
+      if (element.value.length < 3) {
+        element.value = '+7 (';
+      }
+    });
+  }
+
+  //убирает +7
+  if (element) {
+    element.addEventListener('blur', function () {
+      if (element.value === '+7 (' || element.value.length <= 3) {
+        element.value = '';
+      }
+    });
+  }
+};
+
+window.IMask(telInput, {
+  mask: '+{7} (000) 000-00-00'
+});
+
+addValuePhoneField(telInput);
 
 //Валидация полей формы
 if (nameInput && telInput) {

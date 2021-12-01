@@ -79,7 +79,7 @@
           <label class="visually-hidden" for="name">Имя</label>
           <input name="name" id="name" type="text" tabindex="5" placeholder="Введите Ваше Имя" pattern="^[A-Za-zА-Яа-яЁё\s]+$" required="">
           <label class="visually-hidden" for="tel">Телефон</label>
-          <input name="tel" id="tel" type="tel" tabindex="6" maxlength="12" placeholder="Введите Ваш номер телефона" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required="">
+          <input name="tel" id="tel" type="tel" tabindex="6" maxlength="18" placeholder="Введите Ваш номер телефона" pattern="\+7\s?[\(]{0,1}[0-9][0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required="">
           <button class="form__button" type="submit" tabindex="7">Подобрать велосипед мечты</button>
         </form>
       </div>
@@ -204,6 +204,7 @@
       </a>
     </div>
   </footer>
+  <script src="js/imask.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

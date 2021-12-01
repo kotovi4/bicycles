@@ -21,6 +21,7 @@
     "gulp-sourcemaps": "2.6.x",
     "gulp-svgstore": "^7.0.1",
     "gulp-webp": "^4.0.1",
+    "imask": "^6.2.2",
     "node": "^14.15.0",
     "pixel-glass": "^1.0.13",
     "postcss": "^8.2.8",
