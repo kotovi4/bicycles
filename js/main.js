@@ -118,7 +118,6 @@ if (nameInput && telInput) {
 formButton.addEventListener('click', function (e) {
   e.preventDefault();
 
-
   if (nameInput.value !== '' && telInput.value !== '') {
     localStorage.setItem(nameInput.name, nameInput.value);
     localStorage.setItem(telInput.name, telInput.value);
