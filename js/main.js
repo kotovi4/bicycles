@@ -113,10 +113,13 @@ if (nameInput && telInput) {
       telInput.setCustomValidity('');
     }
   });
+}
 
-  formButton.addEventListener('click', function (e) {
-    e.preventDefault();
+formButton.addEventListener('click', function (e) {
+  e.preventDefault();
 
+
+  if (nameInput.value !== '' && telInput.value !== '') {
     localStorage.setItem(nameInput.name, nameInput.value);
     localStorage.setItem(telInput.name, telInput.value);
     openModal();
@@ -125,5 +128,5 @@ if (nameInput && telInput) {
       closeModal();
       form.reset();
     }, 4000);
-  });
-}
+  }
+});
