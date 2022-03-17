@@ -74,13 +74,14 @@
           <h3>Мы продаем велосипеды</h3>
           <p>Наш магазин отбирает только самые лучшие велосипеды для продажи</p>
         </div>
-        <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" enctype="multipart/form-data" autocomplete="off">
+        <!-- <form class="promo__form form" action="https://echo.htmlacademy.ru" method="post" enctype="multipart/form-data" autocomplete="off"> -->
+        <form class="promo__form form" action="#">
           <h3>Заполните поля ниже и мы подберем велосипед Вашей мечты</h3>
           <label class="visually-hidden" for="name">Имя</label>
           <input name="name" id="name" type="text" tabindex="5" placeholder="Введите Ваше Имя" pattern="^[A-Za-zА-Яа-яЁё\s]+$" required>
           <label class="visually-hidden" for="tel">Телефон</label>
           <input name="tel" id="tel" type="tel" tabindex="6" maxlength="18" placeholder="Введите Ваш номер телефона" pattern="\+7\s?[\(]{0,1}[0-9][0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required>
-          <button class="form__button" type="submit" tabindex="7">Подобрать велосипед мечты</button>
+          <button class="form__button" type="submit" tabindex="7" data-modal>Подобрать велосипед мечты</button>
         </form>
       </div>
     </section>
@@ -204,6 +205,14 @@
       </a>
     </div>
   </footer>
+  <div class="modal">
+    <div class="modal__dialog">
+      <div class="modal__content">
+        <div data-close class="modal__close" data-close>&times;</div>
+        <div class="modal__title">Мы свяжемся с вами как можно быстрее!</div>
+      </div>
+    </div>
+  </div>
   <script src="js/imask.js"></script>
   <script src="js/main.js"></script>
 </body>

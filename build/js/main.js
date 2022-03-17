@@ -1,15 +1,15 @@
 'use strict';
 //Меню tablet и mobile
-const body = document.querySelector('.page-body');
-const pageHeader = document.querySelector('.page-header');
-const headerToggle = document.querySelector('.page-header__toggle');
-const mainNavList = document.querySelector('.main-nav-list');
-const form = document.querySelector('.form');
-const nameInput = document.getElementById('name');
-const telInput = document.getElementById('tel');
-const formButton = form.querySelector('.form__button')
-const modal = document.querySelector('.modal');
+const body = document.querySelector('.page-body'),
+      pageHeader = document.querySelector('.page-header'),
+      headerToggle = document.querySelector('.page-header__toggle'),
+      mainNavList = document.querySelector('.main-nav-list'),
+      nameInput = document.getElementById('name'),
+      telInput = document.getElementById('tel'),
+      form = document.querySelector('.form'),
+      formButton = form.querySelector('.form__button');
 
+// Menu
 pageHeader.classList.remove('page-header--nojs');
 pageHeader.classList.add('page-header--closed');
 
@@ -48,8 +48,29 @@ for (const smoothLink of smoothLinks) {
   }
 };
 
+// Modal
+const modal = document.querySelector('.modal'),
+      modalCloseBtn = document.querySelector('[data-close]');
+
+function openModal() {
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal || e.target.getAttribute('data-close') === '') {
+    closeModal();
+    form.reset();
+  }
+});
+
 //Валидация поля телефона
-var addValuePhoneField = function (element) {
+const addValuePhoneField = function (element) {
   //ставит +7 при фокусе на поле
   if (element) {
     element.addEventListener('focus', function () {
@@ -93,8 +114,15 @@ if (nameInput && telInput) {
     }
   });
 
-  formButton.addEventListener('click', function () {
+  formButton.addEventListener('click', function (e) {
+    e.preventDefault();
+
     localStorage.setItem(nameInput.name, nameInput.value);
     localStorage.setItem(telInput.name, telInput.value);
+    openModal();
+
+    setTimeout(() => {
+      closeModal();
+    }, 4000);
   });
 }
