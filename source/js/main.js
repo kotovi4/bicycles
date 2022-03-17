@@ -96,29 +96,12 @@ window.IMask(telInput, {
 
 addValuePhoneField(telInput);
 
-//Валидация полей формы
-if (nameInput && telInput) {
-  nameInput.addEventListener('input', function () {
-    if (nameInput.validity.patternMismatch) {
-      nameInput.setCustomValidity('Вводите только буквы');
-    } else {
-      nameInput.setCustomValidity('');
-    }
-  });
-
-  telInput.addEventListener('input', function () {
-    if (telInput.validity.patternMismatch) {
-      telInput.setCustomValidity('Введите телефон в формате +7 ХХХ ХХХ ХХ ХХ');
-    } else {
-      telInput.setCustomValidity('');
-    }
-  });
-}
-
+// Form
 formButton.addEventListener('click', function (e) {
-  e.preventDefault();
 
   if (nameInput.value !== '' && telInput.value !== '') {
+    e.preventDefault();
+
     localStorage.setItem(nameInput.name, nameInput.value);
     localStorage.setItem(telInput.name, telInput.value);
     openModal();
