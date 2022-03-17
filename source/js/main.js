@@ -123,6 +123,7 @@ if (nameInput && telInput) {
 
     setTimeout(() => {
       closeModal();
+      form.reset();
     }, 4000);
   });
 }
